@@ -1,0 +1,100 @@
+{
+    "usedforid":1423330,
+    "schemaid":1161,
+    "schemaVersion":1.1,
+    "lastupdate":"",
+    "lid":1,
+    "properties":[
+        {
+            "typeid":150,
+            "prpid":13050,
+            "answers":[
+                {
+                    "id":123152,
+                    "parts":[
+                    {
+                        "id":56987,
+                        "part":1,
+                        "value":"دیزال ژنراتور",
+                        "URI":""
+                    }
+                ]}
+            ]
+        },
+        {
+            "typeid":262,
+            "prpid":13057,
+            "answers":[
+                {   
+                    "id":45615,
+                    "parts":[
+                    {
+                        "id":59757,
+                        "part":1,
+                        "value":"کیلو وات",
+                        "URI":""
+
+                    },
+                    {
+                        "id":85257,
+                        "part":2,
+                        "value":"1000",
+                        "URI":""
+
+                    },
+                    {
+                        "id":78957,
+                        "part":3,
+                        "value":"200",
+                        "URI":""
+
+                    }
+                ]},
+                {
+                    "id":156852,
+                    "parts":[
+                    {
+                        "id":78517,
+                        "part":1,
+                        "value":"کیلو ولت آمپر",
+                        "URI":""
+
+                    },
+                    {
+                        "id":79457,
+                        "part":2,
+                        "value":"1500",
+                        "URI":""
+
+                    },
+                    {
+                        "id":78737,
+                        "part":3,
+                        "value":"250",
+                        "URI":""
+
+                    }
+                ]}
+            ]
+        },
+        {
+            "typeid":269,
+            "prpid":12345,
+            "answers":[
+                {
+                    "valueID":127562,
+                    "parts":[
+                    {
+                        "part":1,
+                        "value":122355,
+                        "title":"ایران",
+                        "moreInfo":{
+                            "type":"link /*link | popup | callback */",
+                            "url":""},
+                        "URI":"https://data.basiscore.com/fa/bc/کشور/id/1002236/inf/json"
+                    }
+                ]}
+            ]
+        }
+    ]
+}
