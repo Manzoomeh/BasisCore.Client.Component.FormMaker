@@ -4,6 +4,7 @@ import AnswerPartFactory from "../answer-part/AnswerPartFactory";
 import IFormMakerOptions from "../form-maker/IFormMakerOptions";
 import { IQuestion } from "../form-maker/ISchema";
 import layout from "./assets/layout.html";
+import "./assets/style"
 
 export default class Answer {
   protected readonly question: IQuestion;
@@ -14,10 +15,10 @@ export default class Answer {
   constructor(question: IQuestion, options: IFormMakerOptions, container: Element) {
     this.question = question;
     this.container = container;
-    this._element = HttpUtil.parse(layout).querySelector("[data-bc-part-container]");
-    if (!this.question.multi) {
-      this._element.querySelector("[data-bc-btn-container]").remove();
-    }
+    this._element = HttpUtil.parse(layout).querySelector("[data-bc-answer]");
+    // if (!this.question.multi) {
+    //   this._element.querySelector("[data-bc-btn-container]").remove();
+    // }
     //const partContainer = this._element.querySelector("[data-bc-part-container]");
 
     container.appendChild(this._element);

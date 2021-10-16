@@ -15,7 +15,6 @@ export default class CheckListType extends ListBaseType {
         values.forEach(item => {
             const newTemplate = itemLayout.replace("@title", item.value).replace("@value", item.id.toString());
             const template = HttpUtil.parse(newTemplate).querySelector("div")
-            console.log('f', item);
             this.element.appendChild(template);
         })
     }

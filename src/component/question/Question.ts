@@ -3,7 +3,9 @@ import Answer from "../answer/Answer";
 import IFormMakerOptions from "../form-maker/IFormMakerOptions";
 import { IQuestion } from "../form-maker/ISchema";
 import layout from "./assets/layout.html";
-import "./assets/style.css";
+import "./assets/style";
+
+
 export default class Question {
   private readonly _schema: IQuestion;
   private readonly _element: Element;

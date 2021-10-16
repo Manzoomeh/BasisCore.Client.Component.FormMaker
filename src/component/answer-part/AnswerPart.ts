@@ -2,6 +2,7 @@ import HttpUtil from "../../HttpUtil";
 import IFormMakerOptions from "../form-maker/IFormMakerOptions";
 import { IQuestion, IQuestionPart } from "../form-maker/ISchema";
 import layout from "./assets/layout.html";
+import "./assets/style"
 
 export default abstract class AnswerPart {
   protected _container: Element;
@@ -23,6 +24,6 @@ export default abstract class AnswerPart {
       this.element.querySelector("[data-bc-part-title]").innerHTML = part.caption;
     }
     this.element.querySelector("[data-bc-part-ctl]").innerHTML = partLayout;
-    this._container.prepend(this.element);
+    this._container.appendChild(this.element);
   }
 }

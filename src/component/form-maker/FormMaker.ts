@@ -2,6 +2,7 @@ import HttpUtil from "../../HttpUtil";
 import IFormMakerOptions from "./IFormMakerOptions";
 import ISchema from "./ISchema";
 import layout from "./assets/layout.html";
+import "./assets/style"
 import Question from "../question/Question";
 
 

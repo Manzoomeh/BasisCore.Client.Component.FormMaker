@@ -1,0 +1,12 @@
+[data-bc-question]{
+    clear: both;
+}
+
+[data-bc-title-container]{
+    padding: 0 10px;
+    float: right;
+}
+
+[data-bc-answer-container]{
+    float: right;
+}
