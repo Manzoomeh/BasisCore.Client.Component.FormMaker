@@ -51,22 +51,8 @@
                   "maxLength": "4000",
                   "dataType": "text"
                },
-               "fixValues": [
-                  {
-                     "id": 1,
-                     "value": "کیلووات"
-                  },
-                  {
-                     "id": 2,
-                     "value": "کیلو ولت آمپر"
-                  },
-                  {
-                     "id": 3,
-                     "value": "اسب بخار"
-                  }
-               ],
                "caption": "واحد اندازه گیری",
-               "link": ""
+               "link": "server/schema/${rKey}/fix-data/${prpId}/${part}"
             },
             {
                "part": 2,
@@ -206,6 +192,40 @@
                   "format": "2",
                   "dataType": "ntext"
                },
+               "caption": "",
+               "link": ""
+            }
+         ]
+      },
+      {
+         "prpId": 130601,
+         "typeId": 128,
+         "ord": 100,
+         "vocab": "/ولتاژ",
+         "title": "ولتاژ",
+         "wordId": 50678,
+         "multi": true,
+         "sectionId": "3",
+         "cssClass": "css_13060",
+         "help": "help data",
+         "parts": [
+            {
+               "part": 1,
+               "viewType": "checklist",
+               "cssClass": "css_13060_1",
+               "validations": {
+                  "dataType": "text"
+               },
+               "fixValues": [
+                  {
+                     "id": 4,
+                     "value": "110"
+                  },
+                  {
+                     "id": 5,
+                     "value": "220"
+                  }
+               ],
                "caption": "",
                "link": ""
             }

@@ -1,6 +1,7 @@
 import HttpUtil from "../../HttpUtil";
-import { AnswerPart } from "../answer-part/AnswerPart";
+import AnswerPart from "../answer-part/AnswerPart";
 import AnswerPartFactory from "../answer-part/AnswerPartFactory";
+import IFormMakerOptions from "../form-maker/IFormMakerOptions";
 import { IQuestion } from "../form-maker/ISchema";
 import layout from "./assets/layout.html";
 
@@ -10,7 +11,7 @@ export default class Answer {
   private readonly _element: Element;
   readonly _parts: Array<AnswerPart>;
 
-  constructor(question: IQuestion, container: Element) {
+  constructor(question: IQuestion, options: IFormMakerOptions, container: Element) {
     this.question = question;
     this.container = container;
     this._element = HttpUtil.parse(layout).querySelector("[data-bc-part-container]");
@@ -21,7 +22,7 @@ export default class Answer {
 
     container.appendChild(this._element);
     this._parts = question.parts.map((part) =>
-      AnswerPartFactory.generate(question, part, this._element)
+      AnswerPartFactory.generate(question, part, options, this._element)
     );
   }
 }

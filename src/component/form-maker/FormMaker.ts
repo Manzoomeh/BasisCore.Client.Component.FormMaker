@@ -28,7 +28,7 @@ export default class FormMaker {
     public async loadUIFromQuestion(): Promise<void> {
         const schema = await HttpUtil.getDataAsync<ISchema>(this._options.questionUrl);
         console.log(schema);
-        var c = this._container.querySelector('[data-bc-property-container]');
-        this._question = schema.questions.map(question => new Question(question, c));
+        var container = this._container.querySelector('[data-bc-property-container]');
+        this._question = schema.questions.map(question => new Question(question, this._options, container));
     }
 }
