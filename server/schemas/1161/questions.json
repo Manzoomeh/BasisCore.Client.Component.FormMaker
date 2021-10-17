@@ -230,6 +230,31 @@
           "link": ""
         }
       ]
+    },
+    {
+      "prpId": 130601,
+      "typeId": 128,
+      "ord": 100,
+      "vocab": "/ولتاژ",
+      "title": "ولتاژ",
+      "wordId": 50678,
+      "multi": true,
+      "sectionId": "3",
+      "cssClass": "css_13060",
+      "help": "help data",
+      "parts": [
+        {
+          "part": 1,
+          "viewType": "textarea",
+          "cssClass": "css_13060_1",
+          "validations": {
+            "dataType": "text"
+          },
+
+          "caption": "",
+          "link": ""
+        }
+      ]
     }
   ]
 }
