@@ -1,12 +1,12 @@
 import HttpUtil from "../../HttpUtil";
+import AnswerCollection from "../answer-collection/AnswerCollection";
 import AnswerPart from "../answer-part/AnswerPart";
-import AnswerPartFactory from "../part-control/AnswerPartFactory";
 import IFormMakerOptions from "../form-maker/IFormMakerOptions";
 import { IQuestion } from "../form-maker/ISchema";
+import AddRemoveButton from "../part-control/add-remove-btn/AddRemoveButton";
+import AnswerPartFactory from "../part-control/AnswerPartFactory";
 import layout from "./assets/layout.html";
-import "./assets/style";
-import AddRemoveButton from "../answer-part/add-remove-btn/AddRemoveButton";
-import AnswerCollection from "../answer-collection/AnswerCollection";
+import "./assets/style.css";
 
 export default class Answer {
   protected readonly question: IQuestion;
@@ -30,7 +30,11 @@ export default class Answer {
     );
 
     if (this.question.multi) {
-      this.button = new AddRemoveButton(owner, this._element);
+      this.button = new AddRemoveButton(
+        this._element,
+        () => owner.addAnswer(),
+        () => this._element.remove()
+      );
     }
   }
 }

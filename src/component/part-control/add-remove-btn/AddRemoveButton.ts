@@ -1,14 +1,15 @@
-import AnswerCollection from "../../answer-collection/AnswerCollection";
-import AnswerPart from "../AnswerPart";
+import AnswerPart from "../../answer-part/AnswerPart";
 import layout from "./assets/layout.html";
 
 export default class AddRemoveButton extends AnswerPart {
   private _button: HTMLButtonElement;
   private isAdd: boolean = true;
-  private _owner: AnswerCollection;
-  constructor(owner: AnswerCollection, container: Element) {
-    super(layout, container); //, "&nbsp;");
-    this._owner = owner;
+  private readonly _onAdd: SimpleCallback;
+  private readonly _onRemove: SimpleCallback;
+  constructor(container: Element, onAdd: SimpleCallback, onRemove: SimpleCallback) {
+    super(layout, container);
+    this._onAdd = onAdd;
+    this._onRemove = onRemove;
     this.element.setAttribute("data-part-btn-container", "");
     this._button = this.element.querySelector("[data-bc-btn]");
     this._button.innerHTML = "add";
@@ -17,7 +18,14 @@ export default class AddRemoveButton extends AnswerPart {
 
   private onBtnClick(e: MouseEvent) {
     e.preventDefault();
-    this._owner.addAnswer();
-    console.log(this.isAdd);
+    if (this.isAdd) {
+      this._onAdd();
+      this.isAdd = false;
+      this._button.innerHTML = "remove";
+    } else {
+      this._onRemove();
+    }
   }
 }
+
+declare type SimpleCallback = () => void;

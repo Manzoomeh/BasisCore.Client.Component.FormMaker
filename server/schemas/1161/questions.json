@@ -1,235 +1,235 @@
 {
-   "schemaId": 1161,
-   "schemaVersion": 1.1,
-   "lid": 1,
-   "baseVocab": "http://schema.site/FA/vo",
-   "questions": [
-      {
-         "prpId": 13050,
-         "typeId": 150,
-         "ord": 1000,
-         "vocab": "/عنوان",
-         "title": "نام دیزل ژنراتور",
-         "wordId": 63228,
-         "multi": false,
-         "sectionId": "1",
-         "cssClass": "css_13050",
-         "help": "help data",
-         "parts": [
+  "schemaId": 1161,
+  "schemaVersion": 1.1,
+  "lid": 1,
+  "baseVocab": "http://schema.site/FA/vo",
+  "questions": [
+    {
+      "prpId": 13050,
+      "typeId": 150,
+      "ord": 1000,
+      "vocab": "/عنوان",
+      "title": "نام دیزل ژنراتور",
+      "wordId": 63228,
+      "multi": false,
+      "sectionId": "1",
+      "cssClass": "css_13050",
+      "help": "help data",
+      "parts": [
+        {
+          "part": 1,
+          "viewType": "text",
+          "cssClass": "css_13050_1",
+          "validations": {
+            "minLength": "2",
+            "maxLength": "4000",
+            "dataType": "text"
+          },
+          "caption": "",
+          "link": ""
+        }
+      ]
+    },
+    {
+      "prpId": 13057,
+      "typeId": 262,
+      "ord": 100,
+      "vocab": "/توان-اضطراری",
+      "title": "توان اضطراری",
+      "wordId": 51320,
+      "multi": true,
+      "sectionId": "1",
+      "cssClass": "css_13057",
+      "help": "help data",
+      "parts": [
+        {
+          "part": 1,
+          "viewType": "select",
+          "cssClass": "css_13057_1",
+          "validations": {
+            "minLength": "2",
+            "maxLength": "4000",
+            "dataType": "text"
+          },
+          "caption": "واحد اندازه گیری",
+          "link": "server/schema/${rKey}/fix-data/${prpId}/${part}"
+        },
+        {
+          "part": 2,
+          "viewType": "text",
+          "cssClass": "css_13057_2",
+          "validations": {
+            "minLength": "2",
+            "maxLength": "4000",
+            "dataType": "int"
+          },
+          "caption": "سرعت (دور بر دقیقه)",
+          "link": ""
+        },
+        {
+          "part": 3,
+          "viewType": "text",
+          "cssClass": "css_13057_3",
+          "validations": {
+            "minLength": "2",
+            "maxLength": "4000",
+            "dataType": "int"
+          },
+          "caption": "میزان توان",
+          "link": ""
+        }
+      ]
+    },
+    {
+      "prpId": 12354,
+      "typeId": 269,
+      "ord": 1002,
+      "vocab": "/کشور",
+      "title": "کشور تولید کننده",
+      "multi": true,
+      "sectionId": "2",
+      "cssClass": "css_12354",
+      "help": "help data",
+      "parts": [
+        {
+          "part": 1,
+          "viewType": "autocomplete",
+          "cssClass": "css_12354_1",
+          "validations": {
+            "minLength": "2",
+            "maxLength": "1000"
+          },
+          "caption": "",
+          "link": "https://data.basiscore.com/${rkey}/bc/fa/کشور?prpid=${prpid}&q=${autocomplete}"
+        }
+      ]
+    },
+    {
+      "prpId": 5678,
+      "typeId": 269,
+      "ord": 1002,
+      "vocab": "/شهر",
+      "title": "شهر تولید کننده",
+      "multi": true,
+      "sectionId": "2",
+      "cssClass": "css_5678",
+      "help": "help data",
+      "parts": [
+        {
+          "part": 1,
+          "viewType": "autocomplete",
+          "css-class": "css_5678_1",
+          "validations": {
+            "minLength": "2",
+            "maxLength": "1000",
+            "dataType": "text"
+          },
+          "dependency": [
             {
-               "part": 1,
-               "viewType": "text",
-               "cssClass": "css_13050_1",
-               "validations": {
-                  "minLength": "2",
-                  "maxLength": "4000",
-                  "dataType": "text"
-               },
-               "caption": "",
-               "link": ""
+              "id": "12354  /*آی دی سوال مورد نظر*/",
+              "part": "1 /* پارت سوال مورد نظر */",
+              "schemaId": 1123,
+              "prpId": "2691 /*نام شهر*/"
             }
-         ]
-      },
-      {
-         "prpId": 13057,
-         "typeId": 262,
-         "ord": 100,
-         "vocab": "/توان-اضطراری",
-         "title": "توان اضطراری",
-         "wordId": 51320,
-         "multi": true,
-         "sectionId": "1",
-         "cssClass": "css_13057",
-         "help": "help data",
-         "parts": [
+          ],
+          "caption": "",
+          "method": "post",
+          "link": "https://data.basiscore.com/bc/fa/شهر?prpid=5678"
+        }
+      ]
+    },
+    {
+      "prpId": 13060,
+      "typeId": 128,
+      "ord": 100,
+      "vocab": "/ولتاژ",
+      "title": "ولتاژ",
+      "wordId": 50678,
+      "multi": true,
+      "sectionId": "3",
+      "cssClass": "css_13060",
+      "help": "help data",
+      "parts": [
+        {
+          "part": 1,
+          "viewType": "select",
+          "cssClass": "css_13060_1",
+          "validations": {
+            "dataType": "text"
+          },
+          "fixValues": [
             {
-               "part": 1,
-               "viewType": "select",
-               "cssClass": "css_13057_1",
-               "validations": {
-                  "minLength": "2",
-                  "maxLength": "4000",
-                  "dataType": "text"
-               },
-               "caption": "واحد اندازه گیری",
-               "link": "server/schema/${rKey}/fix-data/${prpId}/${part}"
+              "id": 4,
+              "value": "110"
             },
             {
-               "part": 2,
-               "viewType": "text",
-               "cssClass": "css_13057_2",
-               "validations": {
-                  "minLength": "2",
-                  "maxLength": "4000",
-                  "dataType": "int"
-               },
-               "caption": "سرعت (دور بر دقیقه)",
-               "link": ""
+              "id": 5,
+              "value": "220"
+            }
+          ],
+          "caption": "",
+          "link": ""
+        }
+      ]
+    },
+    {
+      "prpId": 123456,
+      "typeId": 123,
+      "ord": 1000,
+      "vocab": "/تصویر",
+      "title": "تصویر دیزل ژنراتور",
+      "wordId": 123,
+      "multi": false,
+      "sectionId": "3",
+      "cssClass": "css_123456",
+      "help": "help data",
+      "parts": [
+        {
+          "part": 1,
+          "viewType": "upload",
+          "cssClass": "css_123456_1",
+          "validations": {
+            "format": "2",
+            "dataType": "ntext"
+          },
+          "caption": "",
+          "link": ""
+        }
+      ]
+    },
+    {
+      "prpId": 130601,
+      "typeId": 128,
+      "ord": 100,
+      "vocab": "/ولتاژ",
+      "title": "ولتاژ",
+      "wordId": 50678,
+      "multi": true,
+      "sectionId": "3",
+      "cssClass": "css_13060",
+      "help": "help data",
+      "parts": [
+        {
+          "part": 1,
+          "viewType": "checklist",
+          "cssClass": "css_13060_1",
+          "validations": {
+            "dataType": "text"
+          },
+          "fixValues": [
+            {
+              "id": 4,
+              "value": "110"
             },
             {
-               "part": 3,
-               "viewType": "text",
-               "cssClass": "css_13057_3",
-               "validations": {
-                  "minLength": "2",
-                  "maxLength": "4000",
-                  "dataType": "int"
-               },
-               "caption": "میزان توان",
-               "link": ""
+              "id": 5,
+              "value": "220"
             }
-         ]
-      },
-      {
-         "prpId": 12354,
-         "typeId": 269,
-         "ord": 1002,
-         "vocab": "/کشور",
-         "title": "کشور تولید کننده",
-         "multi": true,
-         "sectionId": "2",
-         "cssClass": "css_12354",
-         "help": "help data",
-         "parts": [
-            {
-               "part": 1,
-               "viewType": "autocomplete",
-               "cssClass": "css_12354_1",
-               "validations": {
-                  "minLength": "2",
-                  "maxLength": "1000"
-               },
-               "caption": "",
-               "link": "https://data.basiscore.com/${rkey}/bc/fa/کشور?prpid=${prpid}&q=${autocomplete}"
-            }
-         ]
-      },
-      {
-         "prpId": 5678,
-         "typeId": 269,
-         "ord": 1002,
-         "vocab": "/شهر",
-         "title": "شهر تولید کننده",
-         "multi": true,
-         "sectionId": "2",
-         "cssClass": "css_5678",
-         "help": "help data",
-         "parts": [
-            {
-               "part": 1,
-               "viewType": "autocomplete",
-               "css-class": "css_5678_1",
-               "validations": {
-                  "minLength": "2",
-                  "maxLength": "1000",
-                  "dataType": "text"
-               },
-               "dependency": [
-                  {
-                     "id": "12354  /*آی دی سوال مورد نظر*/",
-                     "part": "1 /* پارت سوال مورد نظر */",
-                     "schemaId": 1123,
-                     "prpId": "2691 /*نام شهر*/"
-                  }
-               ],
-               "caption": "",
-               "method": "post",
-               "link": "https://data.basiscore.com/bc/fa/شهر?prpid=5678"
-            }
-         ]
-      },
-      {
-         "prpId": 13060,
-         "typeId": 128,
-         "ord": 100,
-         "vocab": "/ولتاژ",
-         "title": "ولتاژ",
-         "wordId": 50678,
-         "multi": true,
-         "sectionId": "3",
-         "cssClass": "css_13060",
-         "help": "help data",
-         "parts": [
-            {
-               "part": 1,
-               "viewType": "select",
-               "cssClass": "css_13060_1",
-               "validations": {
-                  "dataType": "text"
-               },
-               "fixValues": [
-                  {
-                     "id": 4,
-                     "value": "110"
-                  },
-                  {
-                     "id": 5,
-                     "value": "220"
-                  }
-               ],
-               "caption": "",
-               "link": ""
-            }
-         ]
-      },
-      {
-         "prpId": 123456,
-         "typeId": 123,
-         "ord": 1000,
-         "vocab": "/تصویر",
-         "title": "تصویر دیزل ژنراتور",
-         "wordId": 123,
-         "multi": false,
-         "sectionId": "3",
-         "cssClass": "css_123456",
-         "help": "help data",
-         "parts": [
-            {
-               "part": 1,
-               "viewType": "upload",
-               "cssClass": "css_123456_1",
-               "validations": {
-                  "format": "2",
-                  "dataType": "ntext"
-               },
-               "caption": "",
-               "link": ""
-            }
-         ]
-      },
-      {
-         "prpId": 130601,
-         "typeId": 128,
-         "ord": 100,
-         "vocab": "/ولتاژ",
-         "title": "ولتاژ",
-         "wordId": 50678,
-         "multi": true,
-         "sectionId": "3",
-         "cssClass": "css_13060",
-         "help": "help data",
-         "parts": [
-            {
-               "part": 1,
-               "viewType": "checklist",
-               "cssClass": "css_13060_1",
-               "validations": {
-                  "dataType": "text"
-               },
-               "fixValues": [
-                  {
-                     "id": 4,
-                     "value": "110"
-                  },
-                  {
-                     "id": 5,
-                     "value": "220"
-                  }
-               ],
-               "caption": "",
-               "link": ""
-            }
-         ]
-      }
-   ]
+          ],
+          "caption": "",
+          "link": ""
+        }
+      ]
+    }
+  ]
 }
