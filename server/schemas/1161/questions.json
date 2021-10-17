@@ -255,6 +255,31 @@
           "link": ""
         }
       ]
+    },
+    {
+      "prpId": 130601,
+      "typeId": 128,
+      "ord": 100,
+      "vocab": "/ولتاژ",
+      "title": "ولتاژ - autocomplete",
+      "wordId": 50678,
+      "multi": false,
+      "sectionId": "3",
+      "cssClass": "css_13060",
+      "help": "help data",
+      "parts": [
+        {
+          "part": 1,
+          "viewType": "autocomplete",
+          "cssClass": "css_13060_1",
+          "validations": {
+            "dataType": "text"
+          },
+
+          "caption": "",
+          "link": "/server/schema/autocomplete?term=${term}"
+        }
+      ]
     }
   ]
 }

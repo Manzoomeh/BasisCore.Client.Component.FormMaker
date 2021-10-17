@@ -1,6 +1,7 @@
 import AnswerPart from "../answer-part/AnswerPart";
 import IFormMakerOptions from "../form-maker/IFormMakerOptions";
 import { IQuestion, IQuestionPart } from "../form-maker/ISchema";
+import AutoCompleteType from "./auto-complete/AutoCompleteType";
 import CheckListType from "./check-list/CheckListType";
 import SelectType from "./select/SelectType";
 import TextAriaType from "./text-area/TextAriaType";
@@ -30,9 +31,15 @@ export default class AnswerPartFactory {
       }
       case "textarea": {
         retVal = new TextAriaType(question, part, options, container);
+        break;
+      }
+      case "autocomplete": {
+        retVal = new AutoCompleteType(question, part, options, container);
+        break;
       }
       default: {
         retVal = new UnknownType(question, part, options, container);
+        break;
       }
     }
     return retVal;
