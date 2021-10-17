@@ -1,6 +1,6 @@
 import IFormMakerOptions from "../form-maker/IFormMakerOptions";
 import { IQuestion, IQuestionPart } from "../form-maker/ISchema";
-import AnswerPart from "./AnswerPart";
+import AnswerPart from "../answer-part/AnswerPart";
 
 export default abstract class QuestionBaseAnswerPart extends AnswerPart {
   protected readonly question: IQuestion;

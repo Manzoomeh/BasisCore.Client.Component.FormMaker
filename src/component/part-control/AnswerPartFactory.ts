@@ -1,10 +1,10 @@
-import TextType from "../part/text/TextType";
-import { IQuestion, IQuestionPart } from "../form-maker/ISchema";
-import AnswerPart from "./AnswerPart";
-import UnknownType from "../part/unknown/UnknownType";
-import SelectType from "../part/select/SelectType";
+import AnswerPart from "../answer-part/AnswerPart";
 import IFormMakerOptions from "../form-maker/IFormMakerOptions";
-import CheckListType from "../part/check-list/CheckListType";
+import { IQuestion, IQuestionPart } from "../form-maker/ISchema";
+import CheckListType from "./check-list/CheckListType";
+import SelectType from "./select/SelectType";
+import TextType from "./text/TextType";
+import UnknownType from "./unknown/UnknownType";
 
 export default class AnswerPartFactory {
   public static generate(

@@ -2,7 +2,7 @@ import HttpUtil from "../../HttpUtil";
 import IFormMakerOptions from "../form-maker/IFormMakerOptions";
 import { IFixValue, IQuestion, IQuestionPart } from "../form-maker/ISchema";
 import AnswerPart from "../answer-part/AnswerPart";
-import QuestionBaseAnswerPart from "../answer-part/QuestionBaseAnswerPart";
+import QuestionBaseAnswerPart from "./QuestionBaseAnswerPart";
 
 export default abstract class ListBaseType extends QuestionBaseAnswerPart {
   constructor(

@@ -1,6 +1,6 @@
 import HttpUtil from "../../HttpUtil";
 import AnswerPart from "../answer-part/AnswerPart";
-import AnswerPartFactory from "../answer-part/AnswerPartFactory";
+import AnswerPartFactory from "../part-control/AnswerPartFactory";
 import IFormMakerOptions from "../form-maker/IFormMakerOptions";
 import { IQuestion } from "../form-maker/ISchema";
 import layout from "./assets/layout.html";
