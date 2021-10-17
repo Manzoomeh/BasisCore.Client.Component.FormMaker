@@ -1,13 +1,18 @@
-import TextType from "./text/TextType";
+import TextType from "../part/text/TextType";
 import { IQuestion, IQuestionPart } from "../form-maker/ISchema";
 import AnswerPart from "./AnswerPart";
-import UnknownType from "./unknown/UnknownType";
-import SelectType from "./select/SelectType";
+import UnknownType from "../part/unknown/UnknownType";
+import SelectType from "../part/select/SelectType";
 import IFormMakerOptions from "../form-maker/IFormMakerOptions";
-import CheckListType from "./check-list/CheckListType";
+import CheckListType from "../part/check-list/CheckListType";
 
 export default class AnswerPartFactory {
-  public static generate(question: IQuestion, part: IQuestionPart, options: IFormMakerOptions, container: Element): AnswerPart {
+  public static generate(
+    question: IQuestion,
+    part: IQuestionPart,
+    options: IFormMakerOptions,
+    container: Element
+  ): AnswerPart {
     var retVal: AnswerPart = null;
     switch (part.viewType.toLowerCase()) {
       case "text": {

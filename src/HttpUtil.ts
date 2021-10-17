@@ -28,4 +28,10 @@ export default class HttpUtil {
   static parse(template: string): Document {
     return HttpUtil.parser.parseFromString(template, "text/html");
   }
+
+  public static Move(oldParent: Node, newParent: Node) {
+    while (oldParent.childNodes.length > 0) {
+      newParent.appendChild(oldParent.childNodes[0]);
+    }
+  }
 }

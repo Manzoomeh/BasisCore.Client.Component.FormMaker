@@ -1,3 +1,12 @@
 [data-bc-answer] {
-    clear: both;
+  clear: both;
+}
+
+[data-bc-part-container],
+[data-bc-btn-container] {
+  float: right;
+}
+
+[data-bc-part-related-cell] {
+  width: 300px;
 }
