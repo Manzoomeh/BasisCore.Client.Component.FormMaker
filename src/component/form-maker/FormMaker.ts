@@ -6,9 +6,9 @@ import "./assets/style";
 import Question from "../question/Question";
 
 export default class FormMaker {
-  private readonly _options: IFormMakerOptions;
+  readonly options: IFormMakerOptions;
   private readonly _container: HTMLElement;
-  private _question: Array<Question>;
+  private _question: Map<number, Question>;
 
   private static get defaultOptions(): Partial<IFormMakerOptions> {
     return {
@@ -17,7 +17,7 @@ export default class FormMaker {
   }
 
   constructor(container: HTMLElement, options: IFormMakerOptions) {
-    this._options = {
+    this.options = {
       ...FormMaker.defaultOptions,
       ...(options ?? ({} as any)),
     };
@@ -26,10 +26,18 @@ export default class FormMaker {
   }
 
   public async loadUIFromQuestion(): Promise<void> {
-    const schema = await HttpUtil.getDataAsync<ISchema>(this._options.questionUrl);
-    var container = this._container.querySelector("[data-bc-property-container]");
-    this._question = schema.questions.map(
-      (question) => new Question(question, this._options, container)
+    const schema = await HttpUtil.getDataAsync<ISchema>(
+      this.options.questionUrl
+    );
+    var container = this._container.querySelector(
+      "[data-bc-property-container]"
+    );
+    this._question = new Map<number, Question>();
+    schema.questions.forEach((question) =>
+      this._question.set(
+        question.prpId,
+        new Question(question, this.options, container)
+      )
     );
   }
 }

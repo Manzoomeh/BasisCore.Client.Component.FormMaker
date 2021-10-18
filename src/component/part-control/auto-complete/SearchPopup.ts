@@ -6,10 +6,18 @@ export default class SearchPopup {
   private readonly _element: Element;
   private readonly _valueSelectCallback: OnValueSelectCallback;
   private readonly _url: string;
-  constructor(url: string, valueSelectCallback: OnValueSelectCallback) {
+  private readonly _multi: boolean;
+  constructor(
+    url: string,
+    valueSelectCallback: OnValueSelectCallback,
+    multi: boolean
+  ) {
     this._url = url;
+    this._multi = multi;
     this._valueSelectCallback = valueSelectCallback;
-    this._element = HttpUtil.parse(layout).querySelector("[data-bc-autocomplete-popup-container]");
+    this._element = HttpUtil.parse(layout).querySelector(
+      "[data-bc-autocomplete-popup-container]"
+    );
     const btn = this._element.querySelector("[data-bc-btn-close");
     btn.addEventListener("click", this.onCloseClick.bind(this));
     const input = this._element.querySelector("[data-bc-search]");
@@ -27,7 +35,8 @@ export default class SearchPopup {
     const term = (e.target as HTMLFormElement).value;
     const url = HttpUtil.formatString(this._url, { term });
     const result = await HttpUtil.getDataAsync<Array<IFixValue>>(url);
-    const ul = this._element.querySelector<HTMLUListElement>("[data-bc-result]");
+    const ul =
+      this._element.querySelector<HTMLUListElement>("[data-bc-result]");
     ul.innerHTML = "";
 
     result.forEach((item) => {
@@ -39,6 +48,9 @@ export default class SearchPopup {
         e.preventDefault();
         if (this._valueSelectCallback(item)) {
           li.remove();
+          if (!this._multi) {
+            this._element.remove();
+          }
         } else {
           //TODO:
         }

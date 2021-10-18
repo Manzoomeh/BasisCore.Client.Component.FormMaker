@@ -3,16 +3,16 @@ import { IQuestion, IQuestionPart } from "../../form-maker/ISchema";
 import AnswerPart from "../../answer-part/AnswerPart";
 import QuestionBaseAnswerPart from "../QuestionBaseAnswerPart";
 import layout from "./assets/layout.html";
+import Answer from "../../answer/Answer";
 
 export default class TextType extends QuestionBaseAnswerPart {
   private _ctl: HTMLInputElement;
   constructor(
-    question: IQuestion,
     part: IQuestionPart,
-    options: IFormMakerOptions,
-    container: Element
+
+    owner: Answer
   ) {
-    super(question, part, layout, options, container);
+    super(part, layout, owner);
     //this._ctl = HttpUtil.parse(layout).getElementsByTagName("input")[0];
     //this.element.querySelector("[data-bc-part-ctl]").appendChild(this._ctl);
   }

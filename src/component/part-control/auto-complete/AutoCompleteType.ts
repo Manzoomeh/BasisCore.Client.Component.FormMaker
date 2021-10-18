@@ -1,28 +1,28 @@
 import HttpUtil from "../../../HttpUtil";
-import IFormMakerOptions from "../../form-maker/IFormMakerOptions";
-import { IFixValue, IQuestion, IQuestionPart } from "../../form-maker/ISchema";
+import { IFixValue, IQuestionPart } from "../../form-maker/ISchema";
 import QuestionBaseAnswerPart from "../QuestionBaseAnswerPart";
 import layout from "./assets/layout.html";
 import "./assets/style";
 import itemLayout from "./assets/item-layout.html";
 import SearchPopup from "./SearchPopup";
+import Answer from "../../answer/Answer";
 
 export default class AutocompleteType extends QuestionBaseAnswerPart {
   private readonly _values: Array<IFixValue> = new Array<IFixValue>();
-  constructor(
-    question: IQuestion,
-    part: IQuestionPart,
-    options: IFormMakerOptions,
-    container: Element
-  ) {
-    super(question, part, layout, options, container);
+
+  constructor(part: IQuestionPart, owner: Answer) {
+    super(part, layout, owner);
     const btn = this.element.querySelector("[data-bc-show-search-popup-btn]");
     btn.addEventListener("click", this.onShowPopUpBtnClick.bind(this));
   }
 
   private onShowPopUpBtnClick(e: MouseEvent) {
     e.preventDefault();
-    const t = new SearchPopup(this.part.link, this.addValue.bind(this));
+    const t = new SearchPopup(
+      this.part.link,
+      this.addValue.bind(this),
+      this.owner.question.multi
+    );
   }
 
   private addValue(value: IFixValue): boolean {

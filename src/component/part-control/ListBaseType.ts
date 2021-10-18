@@ -1,18 +1,12 @@
 import HttpUtil from "../../HttpUtil";
 import IFormMakerOptions from "../form-maker/IFormMakerOptions";
 import { IFixValue, IQuestion, IQuestionPart } from "../form-maker/ISchema";
-import AnswerPart from "../answer-part/AnswerPart";
 import QuestionBaseAnswerPart from "./QuestionBaseAnswerPart";
+import Answer from "../answer/Answer";
 
 export default abstract class ListBaseType extends QuestionBaseAnswerPart {
-  constructor(
-    question: IQuestion,
-    part: IQuestionPart,
-    layout: string,
-    options: IFormMakerOptions,
-    container: Element
-  ) {
-    super(question, part, layout, options, container);
+  constructor(part: IQuestionPart, layout: string, owner: Answer) {
+    super(part, layout, owner);
     if (this.part.fixValues) {
       this.fillUI(this.part.fixValues);
     } else {
@@ -23,8 +17,8 @@ export default abstract class ListBaseType extends QuestionBaseAnswerPart {
   protected abstract fillUI(values: Array<IFixValue>);
   protected async loadFromServerAsync(): Promise<void> {
     const data = {
-      rKey: this.options.rKey,
-      prpId: this.question.prpId,
+      rKey: this.owner.options.rKey,
+      prpId: this.owner.question.prpId,
       part: this.part.part,
     };
     const url = HttpUtil.formatString(this.part.link, data);

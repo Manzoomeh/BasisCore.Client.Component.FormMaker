@@ -4,15 +4,11 @@ import layout from "./assets/layout.html";
 import itemLayout from "./assets/item-layout.html";
 import HttpUtil from "../../../HttpUtil";
 import ListBaseType from "../ListBaseType";
+import Answer from "../../answer/Answer";
 
 export default class CheckListType extends ListBaseType {
-  constructor(
-    question: IQuestion,
-    part: IQuestionPart,
-    options: IFormMakerOptions,
-    container: Element
-  ) {
-    super(question, part, layout, options, container);
+  constructor(part: IQuestionPart, owner: Answer) {
+    super(part, layout, owner);
   }
 
   protected fillUI(values: Array<IFixValue>) {
