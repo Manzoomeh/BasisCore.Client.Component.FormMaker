@@ -37,12 +37,15 @@ export default class SearchPopup {
       li.innerHTML = item.value;
       li.addEventListener("dblclick", (e) => {
         e.preventDefault();
-        this._valueSelectCallback(item);
-        li.remove();
+        if (this._valueSelectCallback(item)) {
+          li.remove();
+        } else {
+          //TODO:
+        }
       });
       ul.appendChild(li);
     });
   }
 }
 
-export type OnValueSelectCallback = (value: IFixValue) => void;
+export type OnValueSelectCallback = (value: IFixValue) => boolean;
