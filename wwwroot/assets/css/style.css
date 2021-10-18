@@ -1,0 +1,35 @@
+@font-face {
+    font-family: "IRANSansWeb";
+    src: url(../fonts/IRANSansWeb.eot);
+    src: local("?"), url(../fonts/IRANSansWeb.woff) format("woff"), url(../fonts/IRANSansWeb.ttf) format("truetype"), url(../fonts/IRANSansWeb.otf) format("otf");
+    font-weight: 0;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: "IRANSansWeb";
+    direction: rtl;
+    color: #212121;
+    border-collapse: collapse;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    /* background: #f9f9f9; */
+    font-size: 14px;
+    color: #212121;
+    font-weight: normal;
+    overflow-x: hidden;
+}

@@ -3,6 +3,7 @@ import IFormMakerOptions from "../../form-maker/IFormMakerOptions";
 import { IFixValue, IQuestion, IQuestionPart } from "../../form-maker/ISchema";
 import QuestionBaseAnswerPart from "../QuestionBaseAnswerPart";
 import layout from "./assets/layout.html";
+import "./assets/style";
 import itemLayout from "./assets/item-layout.html";
 import SearchPopup from "./SearchPopup";
 

@@ -21,7 +21,7 @@ export default class CheckListType extends ListBaseType {
         .replace("@title", item.value)
         .replace("@value", item.id.toString());
       const template = HttpUtil.parse(newTemplate).querySelector("div");
-      this.element.appendChild(template);
+      this.element.querySelector("div").appendChild(template);
     });
   }
 }

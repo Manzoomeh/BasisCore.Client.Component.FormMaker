@@ -9,7 +9,7 @@ export default class SearchPopup {
   constructor(url: string, valueSelectCallback: OnValueSelectCallback) {
     this._url = url;
     this._valueSelectCallback = valueSelectCallback;
-    this._element = HttpUtil.parse(layout).querySelector("[data-bc-autocomplete-popup]");
+    this._element = HttpUtil.parse(layout).querySelector("[data-bc-autocomplete-popup-container]");
     const btn = this._element.querySelector("[data-bc-btn-close");
     btn.addEventListener("click", this.onCloseClick.bind(this));
     const input = this._element.querySelector("[data-bc-search]");

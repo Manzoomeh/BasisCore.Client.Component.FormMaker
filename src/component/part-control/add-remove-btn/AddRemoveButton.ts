@@ -12,7 +12,8 @@ export default class AddRemoveButton extends AnswerPart {
     this._onRemove = onRemove;
     this.element.setAttribute("data-part-btn-container", "");
     this._button = this.element.querySelector("[data-bc-btn]");
-    this._button.innerHTML = "add";
+    this._button.setAttribute("data-bc-btn", "add");
+    // this._button.innerHTML = "add";
     this._button.addEventListener("click", this.onBtnClick.bind(this));
   }
 
@@ -21,7 +22,8 @@ export default class AddRemoveButton extends AnswerPart {
     if (this.isAdd) {
       this._onAdd();
       this.isAdd = false;
-      this._button.innerHTML = "remove";
+      this._button.setAttribute("data-bc-btn", "remove");
+      // this._button.innerHTML = "remove";
     } else {
       this._onRemove();
     }
