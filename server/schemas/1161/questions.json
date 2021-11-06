@@ -295,7 +295,7 @@
       "parts": [
         {
           "part": 1,
-          "viewType": "autocompleteA",
+          "viewType": "autocomplete",
           "cssClass": "css_13060_1",
           "validations": {
             "dataType": "text"

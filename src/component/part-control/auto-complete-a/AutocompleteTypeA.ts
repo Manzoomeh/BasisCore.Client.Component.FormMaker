@@ -24,7 +24,7 @@ export default class AutocompleteTypeA extends QuestionBaseAnswerPart {
 
   private onShowPopUpBtnClick(e: MouseEvent) {
     e.preventDefault();
-    const t = new SearchPopup(
+    const popup = new SearchPopup(
       this.part.link,
       this.addValue.bind(this),
       this.owner.question.multi

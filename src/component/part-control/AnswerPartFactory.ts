@@ -3,6 +3,8 @@ import Answer from "../answer/Answer";
 import IFormMakerOptions from "../form-maker/IFormMakerOptions";
 import { IPartResult, IQuestion, IQuestionPart } from "../form-maker/ISchema";
 import AutocompleteTypeA from "./auto-complete-a/AutocompleteTypeA";
+import AutoCompleteMultiType from "./auto-complete/AutoCompleteMultiType";
+import AutoCompleteSingleType from "./auto-complete/AutocompleteSingleType";
 import AutoCompleteType from "./auto-complete/AutoCompleteType";
 import CheckListType from "./check-list/CheckListType";
 import SelectType from "./select/SelectType";
@@ -12,6 +14,7 @@ import UnknownType from "./unknown/UnknownType";
 
 export default class AnswerPartFactory {
   public static generate(
+    question: IQuestion,
     part: IQuestionPart,
     owner: Answer,
     data?: IPartResult
@@ -35,7 +38,10 @@ export default class AnswerPartFactory {
         break;
       }
       case "autocomplete": {
-        retVal = new AutoCompleteType(part, owner);
+        retVal = question.multi
+          ? new AutoCompleteMultiType(part, owner)
+          : new AutoCompleteSingleType(part, owner);
+
         break;
       }
       case "autocompletea": {
