@@ -11,10 +11,13 @@ export type ViewType =
   | "Datepicker"
   | "Checklist";
 
-export default interface ISchema {
+export interface ISchema {
   schemaId: number;
   schemaVersion: number;
   lid: number;
+}
+
+export default interface IQuestionSchema extends ISchema {
   baseVocab: string;
   questions: Array<IQuestion>;
   sections: Array<ISection>;
@@ -58,17 +61,42 @@ export interface IDependency {
   prpId: number;
 }
 
-export interface IAnswerResult {
-  parts: Array<IPartResult>;
-}
+// export interface IAnswerResult {
+//   parts: Array<IPartResult>;
+// }
 
-export interface IPartResult {
-  part: number;
-  value: any;
-  title: string;
-}
+// export interface IPartResult {
+//   part: number;
+//   value: any;
+//   title: string;
+// }
 export interface ISection {
   id: number;
   title: string;
   description: string;
+}
+
+export interface IAnswerSchema extends ISchema {
+  usedForId: number;
+  lastUpdate: string;
+  properties: Array<IAnswerProperty>;
+}
+
+export interface IAnswerProperty {
+  prpId: number;
+  answers: Array<IAnswerPart>;
+}
+
+export interface IAnswerPart {
+  id: number;
+  parts: Array<IPartCollection>;
+}
+export interface IPartCollection {
+  part: number;
+  values: Array<IPartValue>;
+}
+export interface IPartValue {
+  id?: number;
+  title: string;
+  value: any;
 }

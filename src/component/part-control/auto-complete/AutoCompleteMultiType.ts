@@ -1,12 +1,12 @@
-import Answer from "../../answer/Answer";
-import { IAnswerResult, IFixValue, IPartResult, IQuestionPart } from "../../form-maker/ISchema";
+import Question from "../../question/Question";
+import { IAnswerPart, IFixValue, IPartCollection, IQuestionPart } from "../../form-maker/ISchema";
 import layout from "./assets/auto-complete-multi-type.html";
 import "./assets/style";
 import AutoCompleteType from "./AutoCompleteType";
 import SearchPopup from "./SearchPopup";
 
 export default class AutoCompleteMultiType extends AutoCompleteType {
-  constructor(part: IQuestionPart, owner: Answer, value: IPartResult) {
+  constructor(part: IQuestionPart, owner: Question, value: IPartCollection) {
     super(part, layout, owner, value);
     owner.replaceAddClick(this.onShowPopUpBtnClick.bind(this));
   }
@@ -19,12 +19,18 @@ export default class AutoCompleteMultiType extends AutoCompleteType {
     if (!this._value) {
       this.setValue(value);
     } else {
-      var p: IAnswerResult = {
+      var p: IAnswerPart = {
+        id: null,
         parts: [
           {
             part: this.part.part,
-            title: value.value,
-            value: value.id,
+            values: [
+              {
+                id: null,
+                title: value.value,
+                value: value.id,
+              },
+            ],
           },
         ],
       };

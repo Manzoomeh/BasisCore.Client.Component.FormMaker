@@ -2,28 +2,30 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="basiscore.form-maker.js"></script>
-    <title>Document</title>
-    <link href="/assets/css/style.css" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form maker Examples</title>
 </head>
 
 <body>
-    <div id="form" style="padding: 20px;"></div>
-    <script>
-        const config = {
-            mode: "new",
-            rKey: "1234-676876-2121",
-            questionUrl: "/server/schema/1161/questions"
-        }
-
-        const div = document.getElementById("form");
-        const fm = new formMaker.formMaker(div, config);
-        fm.loadUIFromQuestion().then(_ => console.log("end"));
-
-    </script>
+    <ul>
+        <li>
+            JavaScript library
+            <ul>
+                <li><a href="library/new.html">New</a></li>
+                <li><a href="library/edit.html">Edit</a></li>
+            </ul>
+        </li>
+        <li>
+            BasisCore Component
+            <ul>
+                <li><a href="./component/zero-config.html">ُSimple</a></li>
+                <li><a href="./new.html">New</a></li>
+                <li><a href="./edit.html">Edit</a></li>
+            </ul>
+        </li>
+    </ul>
 </body>
 
 </html>

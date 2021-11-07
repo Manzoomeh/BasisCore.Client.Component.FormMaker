@@ -1,6 +1,6 @@
-import AnswerPart from "../answer-part/AnswerPart";
-import Answer from "../answer/Answer";
-import { IPartResult, IQuestion, IQuestionPart } from "../form-maker/ISchema";
+import QuestionPart from "../question-part/QuestionPart";
+import Question from "../question/Question";
+import { IPartCollection, IQuestion, IQuestionPart } from "../form-maker/ISchema";
 import AutoCompleteMultiType from "./auto-complete/AutoCompleteMultiType";
 import AutoCompleteSingleType from "./auto-complete/AutocompleteSingleType";
 import CheckListType from "./check-list/CheckListType";
@@ -13,10 +13,10 @@ export default class AnswerPartFactory {
   public static generate(
     question: IQuestion,
     part: IQuestionPart,
-    owner: Answer,
-    data?: IPartResult
-  ): AnswerPart {
-    var retVal: AnswerPart = null;
+    owner: Question,
+    data?: IPartCollection
+  ): QuestionPart {
+    var retVal: QuestionPart = null;
     switch (part.viewType.toLowerCase()) {
       case "text": {
         retVal = new TextType(part, owner);

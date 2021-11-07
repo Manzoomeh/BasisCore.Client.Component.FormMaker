@@ -27,6 +27,20 @@ router.get("/schema/:id/questions", function (req, res) {
   });
 });
 
+router.get("/schema/:id/answer", function (req, res) {
+  const stream = fs.createReadStream(
+    path.join(__dirname, `/schemas/${req.params.id}/answers.json`)
+  );
+  stream.on("open", function () {
+    res.set("Content-Type", "application/json");
+    stream.pipe(res);
+  });
+  stream.on("error", function () {
+    res.set("Content-Type", "text/plain");
+    res.status(404).end("Not found");
+  });
+});
+
 router.get("/schema/:rKey/fix-data/:prpId/:part", function (req, res) {
   const fixDataStr = fs.readFileSync(path.join(__dirname, "data.json"), {
     encoding: "utf8",

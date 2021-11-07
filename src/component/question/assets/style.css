@@ -1,71 +1,65 @@
-[data-bc-question] {
+[data-bc-answer] {
   clear: both;
-  margin-bottom: 5px;
 }
 
-[data-bc-title-container] {
-  width: 300px;
-  /* padding: 0 10px; */
+[data-bc-part-container],
+[data-bc-btn-container] {
   float: right;
-  line-height: 30px;
-  margin-left: 5px;
-  position: relative;
+  /* display: inline-block; */
+  /* margin-bottom: 5px; */
 }
 
-[data-bc-title-container] [data-bc-help-btn] {
-  background-image: url(help.PNG);
-  background-position: center;
-  float: left;
-  width: 17px;
-  height: 17px;
-  border-radius: 50%;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+[data-part-btn-container] {
+  vertical-align: top;
+}
+
+[data-bc-question] [data-bc-btn] {
+  width: 30px;
+  height: 30px;
+  border: none;
+  /* background-repeat: no-repeat; */
+  background-position: center center;
   cursor: pointer;
 }
 
-[data-bc-title-container] [data-bc-help-btn]:hover {
-  background-image: url(help-hover.PNG);
+[data-bc-question] [data-bc-btn="add"] {
+  background-image: url(add.PNG);
 }
 
-
-[data-bc-answer-container] {
-  /* float: right; */
-  display: inline-block;
+[data-bc-question] [data-bc-btn="add"]:hover {
+  background-image: url(add-hover.PNG);
 }
 
-[data-bc-answer-container] input[type="text"],
-[data-bc-answer-container] select,
-[data-bc-answer-container] textarea {
-  padding: 0.1em 0.4em;
-  display: inline-block;
-  border: 1px solid #C7D6DB;
-  background: #F5F8F9;
+[data-bc-question] [data-bc-btn="remove"] {
+  background-image: url(remove.PNG);
+}
+
+[data-bc-question] [data-bc-btn="remove"]:hover {
+  background-image: url(remove-hover.PNG);
+}
+
+[data-bc-part-related-cell] {
+  width: 300px;
+  margin-left: 5px;
+  /* margin-bottom: 5px; */
+}
+
+[data-bc-part-related-cell] [data-bc-part-checkbox] {
+  padding: 0.5em 0.6em;
+  border: 1px solid #c7d6db;
   border-radius: 4px;
-  transition: border 0.3s linear 0s;
-  box-sizing: border-box;
-  width: 100%;
-  font-size: 12px;
-  color: #555;
 }
 
-[data-bc-answer-container] input[type="text"],
-[data-bc-answer-container] select {
+[data-bc-part-related-cell] [data-bc-show-search-popup-btn] {
+  width: 30px;
   height: 30px;
+  border: none;
+  /* background-repeat: no-repeat; */
+  background-position: center center;
+  background-image: url(add.PNG);
+  cursor: pointer;
 }
 
-[data-bc-answer-container] textarea {
-  height: 175px;
-  resize: vertical;
-}
-
-[data-bc-answer-container] input[type="text"]:focus,
-[data-bc-answer-container] select:focus,
-[data-bc-answer-container] textarea:focus {
-  border-color: #66afe9;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
-  outline: 0 none;
-  background: #fff8ee;
+[data-bc-part-related-cell] [data-bc-show-search-popup-btn]:hover {
+  background-image: url(add-hover.PNG);
 }

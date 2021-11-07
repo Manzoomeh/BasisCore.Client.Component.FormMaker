@@ -4,10 +4,10 @@ import layout from "./assets/layout.html";
 import itemLayout from "./assets/item-layout.html";
 import HttpUtil from "../../../HttpUtil";
 import ListBaseType from "../ListBaseType";
-import Answer from "../../answer/Answer";
+import Question from "../../question/Question";
 
 export default class CheckListType extends ListBaseType {
-  constructor(part: IQuestionPart, owner: Answer) {
+  constructor(part: IQuestionPart, owner: Question) {
     super(part, layout, owner);
   }
 

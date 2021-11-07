@@ -1,5 +1,5 @@
-import Answer from "../../answer/Answer";
-import { IFixValue, IPartResult, IQuestionPart } from "../../form-maker/ISchema";
+import Question from "../../question/Question";
+import { IFixValue, IPartCollection, IQuestionPart } from "../../form-maker/ISchema";
 import layout from "./assets/auto-complete-single-type.html";
 import SearchPopup from "./SearchPopup";
 import "./assets/style";
@@ -7,7 +7,7 @@ import AutoCompleteType from "./AutoCompleteType";
 
 export default class AutoCompleteSingleType extends AutoCompleteType {
   private _btn: HTMLButtonElement;
-  constructor(part: IQuestionPart, owner: Answer, value: IPartResult) {
+  constructor(part: IQuestionPart, owner: Question, value: IPartCollection) {
     super(part, layout, owner, value);
     this._btn = this.element.querySelector("[data-bc-btn]");
     this._btn.addEventListener("click", this.onShowPopUpBtnClick.bind(this));

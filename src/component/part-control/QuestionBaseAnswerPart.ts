@@ -1,12 +1,12 @@
 import { IQuestionPart } from "../form-maker/ISchema";
-import AnswerPart from "../answer-part/AnswerPart";
+import QuestionPart from "../question-part/QuestionPart";
 import HttpUtil from "../../HttpUtil";
-import Answer from "../answer/Answer";
+import Question from "../question/Question";
 
-export default abstract class QuestionBaseAnswerPart extends AnswerPart {
+export default abstract class QuestionBaseAnswerPart extends QuestionPart {
   protected readonly part: IQuestionPart;
 
-  constructor(part: IQuestionPart, partLayout: string, owner: Answer) {
+  constructor(part: IQuestionPart, partLayout: string, owner: Question) {
     super(partLayout, owner);
     this.part = part;
     this.element.setAttribute("data-bc-part-related-cell", "");

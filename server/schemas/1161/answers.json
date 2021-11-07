@@ -1,100 +1,172 @@
 {
-    "usedforid":1423330,
-    "schemaid":1161,
-    "schemaVersion":1.1,
-    "lastupdate":"",
-    "lid":1,
-    "properties":[
+  "usedforid": 1423330,
+  "schemaid": 1161,
+  "schemaVersion": 1.1,
+  "lastupdate": "",
+  "lid": 1,
+  "properties": [
+    {
+      "prpid": 13050,
+      "answers": [
         {
-            "typeid":150,
-            "prpid":13050,
-            "answers":[
+          "id": 123152,
+          "parts": [
+            {
+              "part": 1,
+              "values": [
                 {
-                    "id":123152,
-                    "parts":[
-                    {
-                        "id":56987,
-                        "part":1,
-                        "value":"دیزال ژنراتور",
-                        "URI":""
-                    }
-                ]}
-            ]
-        },
-        {
-            "typeid":262,
-            "prpid":13057,
-            "answers":[
-                {   
-                    "id":45615,
-                    "parts":[
-                    {
-                        "id":59757,
-                        "part":1,
-                        "value":"کیلو وات",
-                        "URI":""
-
-                    },
-                    {
-                        "id":85257,
-                        "part":2,
-                        "value":"1000",
-                        "URI":""
-
-                    },
-                    {
-                        "id":78957,
-                        "part":3,
-                        "value":"200",
-                        "URI":""
-
-                    }
-                ]},
-                {
-                    "id":156852,
-                    "parts":[
-                    {
-                        "id":78517,
-                        "part":1,
-                        "value":"کیلو ولت آمپر",
-                        "URI":""
-
-                    },
-                    {
-                        "id":79457,
-                        "part":2,
-                        "value":"1500",
-                        "URI":""
-
-                    },
-                    {
-                        "id":78737,
-                        "part":3,
-                        "value":"250",
-                        "URI":""
-
-                    }
-                ]}
-            ]
-        },
-        {
-            "typeid":269,
-            "prpid":12345,
-            "answers":[
-                {
-                    "valueID":127562,
-                    "parts":[
-                    {
-                        "part":1,
-                        "value":122355,
-                        "title":"ایران",
-                        "moreInfo":{
-                            "type":"link /*link | popup | callback */",
-                            "url":""},
-                        "URI":"https://data.basiscore.com/fa/bc/کشور/id/1002236/inf/json"
-                    }
-                ]}
-            ]
+                  "id": 56987,
+                  "value": "نام دیزال ژنراتور"
+                }
+              ]
+            }
+          ]
         }
-    ]
+      ]
+    },
+    {
+      "typeid": 144,
+      "prpid": 130601,
+      "answers": [
+        {
+          "id": 8456215,
+          "parts": [
+            {
+              "part": 1,
+              "values": [
+                {
+                  "id": 78854,
+                  "value": "توضیحات"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "typeid": 123,
+      "prpid": 1360,
+      "answers": [
+        {
+          "id": 123152,
+          "parts": [
+            {
+              "part": 1,
+              "values": [
+                {
+                  "id": 56987,
+                  "title": "110",
+                  "value": "123"
+                },
+                {
+                  "id": 8546,
+                  "title": "220",
+                  "value": "18423"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "typeid": 262,
+      "prpid": 13057,
+      "answers": [
+        {
+          "id": 45615,
+          "parts": [
+            {
+              "part": 1,
+              "values": [
+                {
+                  "id": 59757,
+                  "title": "کیلو وات",
+                  "value": 5248
+                }
+              ]
+            },
+            {
+              "part": 2,
+              "values": [
+                {
+                  "id": 85257,
+                  "value": "1000"
+                }
+              ]
+            },
+            {
+              "part": 3,
+              "values": [
+                {
+                  "id": 78957,
+                  "value": "200"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 156852,
+          "parts": [
+            {
+              "part": 1,
+              "values": [
+                {
+                  "id": 78517,
+                  "title": "کیلو ولت آمپر",
+                  "value": "5248"
+                }
+              ]
+            },
+            {
+              "part": 2,
+              "values": [
+                {
+                  "id": 79457,
+                  "value": "1500"
+                }
+              ]
+            },
+            {
+              "part": 3,
+              "values": [
+                {
+                  "id": 78737,
+                  "value": "250"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "typeid": 269,
+      "prpid": 12345,
+      "answers": [
+        {
+          "id": 127562,
+          "parts": [
+            {
+              "part": 1,
+              "values": [
+                {
+                  "id": 123564,
+                  "title": "ایران",
+                  "value": 122355
+                }
+              ],
+              "moreInfo": {
+                "type": "link /*link | popup | callback */",
+                "url": ""
+              },
+              "URI": "https://data.basiscore.com/fa/bc/کشور/id/1002236/inf/json"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

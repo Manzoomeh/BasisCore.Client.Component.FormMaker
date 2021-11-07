@@ -52,7 +52,7 @@
             "dataType": "text"
           },
           "caption": "واحد اندازه گیری",
-          "link": "server/schema/${rKey}/fix-data/${prpId}/${part}"
+          "link": "/server/schema/${rKey}/fix-data/${prpId}/${part}"
         },
         {
           "part": 2,

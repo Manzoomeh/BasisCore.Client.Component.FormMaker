@@ -1,9 +1,0 @@
-[data-bc-answer-title-container] {
-  /* margin-bottom: 5px; */
-}
-
-[data-bc-answer-title-container] [data-bc-answer-title] {
-  /* float: right; */
-  display: inline-block;
-  line-height: 30px;
-}

@@ -1,14 +1,15 @@
 import HttpUtil from "../../HttpUtil";
 import IFormMakerOptions from "./IFormMakerOptions";
-import ISchema from "./ISchema";
+import IQuestionSchema, { IAnswerSchema } from "./ISchema";
 import layout from "./assets/layout.html";
 import "./assets/style";
-import Question from "../question/Question";
+import QuestionCollection from "../question-container/QuestionContainer";
 
 export default class FormMaker {
   readonly options: IFormMakerOptions;
   private readonly _container: HTMLElement;
-  private _question: Map<number, Question>;
+  private _question: Map<number, QuestionCollection>;
+  private _answer: IAnswerSchema;
 
   private static get defaultOptions(): Partial<IFormMakerOptions> {
     return {
@@ -26,18 +27,18 @@ export default class FormMaker {
   }
 
   public async loadUIFromQuestion(): Promise<void> {
-    const schema = await HttpUtil.getDataAsync<ISchema>(
-      this.options.questionUrl
-    );
-    var container = this._container.querySelector(
-      "[data-bc-property-container]"
-    );
-    this._question = new Map<number, Question>();
-    schema.questions.forEach((question) =>
+    if (this.options.answerUrl) {
+      this._answer = await HttpUtil.getDataAsync<IAnswerSchema>(this.options.answerUrl);
+    }
+    const schema = await HttpUtil.getDataAsync<IQuestionSchema>(this.options.questionUrl);
+    var container = this._container.querySelector("[data-bc-property-container]");
+    this._question = new Map<number, QuestionCollection>();
+    schema.questions.forEach((question) => {
+      const answer = this._answer?.properties.find((x) => x.prpId == question.prpId);
       this._question.set(
         question.prpId,
-        new Question(question, this.options, container)
-      )
-    );
+        new QuestionCollection(question, this.options, container, answer)
+      );
+    });
   }
 }

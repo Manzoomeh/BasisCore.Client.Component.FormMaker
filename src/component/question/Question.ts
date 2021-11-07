@@ -1,21 +1,73 @@
 import HttpUtil from "../../HttpUtil";
-import AnswerCollection from "../answer-collection/AnswerCollection";
+import QuestionPart from "../question-part/QuestionPart";
 import IFormMakerOptions from "../form-maker/IFormMakerOptions";
-import { IQuestion } from "../form-maker/ISchema";
+import { IAnswerPart, IQuestion } from "../form-maker/ISchema";
+import AnswerPartFactory from "../part-control/AnswerPartFactory";
+import QuestionContainer from "../question-container/QuestionContainer";
 import layout from "./assets/layout.html";
-import "./assets/style";
+import "./assets/style.css";
 
 export default class Question {
-  private readonly _schema: IQuestion;
-  private readonly _element: Element;
-  private readonly _answer: AnswerCollection;
+  readonly question: IQuestion;
+  protected readonly container: Element;
+  readonly element: Element;
+  readonly options: IFormMakerOptions;
+  readonly _parts: Array<QuestionPart>;
+  readonly button: HTMLButtonElement;
+  readonly owner: QuestionContainer;
 
-  constructor(question: IQuestion, options: IFormMakerOptions, container: Element) {
-    this._schema = question;
-    var copyTemplate = layout.replace("@title", this._schema.title);
-    this._element = HttpUtil.parse(copyTemplate).querySelector("[data-bc-question]");
-    container.appendChild(this._element);
-    const answerContainer = this._element.querySelector("[data-bc-answer-container]");
-    this._answer = new AnswerCollection(question, options, answerContainer);
+  private _onAddClick: AddRemoveCallback;
+  private readonly _onRemoveClick: AddRemoveCallback;
+
+  constructor(
+    question: IQuestion,
+    options: IFormMakerOptions,
+    owner: QuestionContainer,
+    container: Element,
+    answer?: IAnswerPart
+  ) {
+    this.question = question;
+    this.container = container;
+    this.options = options;
+    this.owner = owner;
+    const ui = HttpUtil.parse(layout).querySelector("[data-bc-answer]");
+    this.element = ui.querySelector("[data-bc-part-container]");
+    if (this.question.multi) {
+      this.button = ui.querySelector("[data-bc-btn]");
+      this.button.setAttribute("data-bc-btn", "add");
+      this.button.addEventListener("click", this.onBtnClick.bind(this));
+      this._onAddClick = () => {
+        this.owner.addAnswer();
+        this.setRemovable();
+      };
+      this._onRemoveClick = () => ui.remove();
+    } else {
+      ui.querySelector("[data-bc-btn]").remove();
+    }
+    container.appendChild(ui);
+
+    this._parts = question.parts.map((part) => {
+      const value = answer?.parts.find((x) => x.part === part.part);
+      return AnswerPartFactory.generate(question, part, this, value);
+    });
+  }
+
+  public setRemovable() {
+    this.button.setAttribute("data-bc-btn", "remove");
+  }
+
+  private onBtnClick(e: MouseEvent) {
+    e.preventDefault();
+    if (this.button.getAttribute("data-bc-btn") === "add") {
+      this._onAddClick();
+    } else {
+      this._onRemoveClick();
+    }
+  }
+
+  public replaceAddClick(onClick: AddRemoveCallback) {
+    this._onAddClick = onClick;
   }
 }
+
+declare type AddRemoveCallback = () => void;
