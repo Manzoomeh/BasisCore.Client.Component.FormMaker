@@ -1,11 +1,8 @@
 import AnswerPart from "../answer-part/AnswerPart";
 import Answer from "../answer/Answer";
-import IFormMakerOptions from "../form-maker/IFormMakerOptions";
 import { IPartResult, IQuestion, IQuestionPart } from "../form-maker/ISchema";
-import AutocompleteTypeA from "./auto-complete-a/AutocompleteTypeA";
 import AutoCompleteMultiType from "./auto-complete/AutoCompleteMultiType";
 import AutoCompleteSingleType from "./auto-complete/AutocompleteSingleType";
-import AutoCompleteType from "./auto-complete/AutoCompleteType";
 import CheckListType from "./check-list/CheckListType";
 import SelectType from "./select/SelectType";
 import TextAriaType from "./text-area/TextAriaType";
@@ -39,13 +36,8 @@ export default class AnswerPartFactory {
       }
       case "autocomplete": {
         retVal = question.multi
-          ? new AutoCompleteMultiType(part, owner)
-          : new AutoCompleteSingleType(part, owner);
-
-        break;
-      }
-      case "autocompletea": {
-        retVal = new AutocompleteTypeA(part, data, owner);
+          ? new AutoCompleteMultiType(part, owner, data)
+          : new AutoCompleteSingleType(part, owner, data);
         break;
       }
       default: {

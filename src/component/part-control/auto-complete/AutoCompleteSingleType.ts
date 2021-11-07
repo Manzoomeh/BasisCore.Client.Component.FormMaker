@@ -1,15 +1,14 @@
 import Answer from "../../answer/Answer";
-import { IFixValue, IQuestionPart } from "../../form-maker/ISchema";
-import QuestionBaseAnswerPart from "../QuestionBaseAnswerPart";
+import { IFixValue, IPartResult, IQuestionPart } from "../../form-maker/ISchema";
 import layout from "./assets/auto-complete-single-type.html";
 import SearchPopup from "./SearchPopup";
 import "./assets/style";
+import AutoCompleteType from "./AutoCompleteType";
 
-export default class AutoCompleteSingleType extends QuestionBaseAnswerPart {
-  private _value: IFixValue;
+export default class AutoCompleteSingleType extends AutoCompleteType {
   private _btn: HTMLButtonElement;
-  constructor(part: IQuestionPart, owner: Answer) {
-    super(part, layout, owner);
+  constructor(part: IQuestionPart, owner: Answer, value: IPartResult) {
+    super(part, layout, owner, value);
     this._btn = this.element.querySelector("[data-bc-btn]");
     this._btn.addEventListener("click", this.onShowPopUpBtnClick.bind(this));
   }
@@ -17,11 +16,7 @@ export default class AutoCompleteSingleType extends QuestionBaseAnswerPart {
   private onShowPopUpBtnClick(e: MouseEvent) {
     e.preventDefault();
     if (this._btn.getAttribute("data-bc-btn") === "add") {
-      const t = new SearchPopup(
-        this.part.link,
-        this.addValue.bind(this),
-        false
-      );
+      const t = new SearchPopup(this.part.link, this.addValue.bind(this), false);
     } else {
       this._value = null;
       this.element.querySelector("label").innerHTML = "";
@@ -30,11 +25,10 @@ export default class AutoCompleteSingleType extends QuestionBaseAnswerPart {
   }
 
   private addValue(value: IFixValue): boolean {
-    if (this._value?.id !== value.id) {
-      this.element.querySelector("label").innerHTML = value.value;
-      this._value = value;
+    const changed = this.setValue(value);
+    if (changed) {
       this._btn.setAttribute("data-bc-btn", "remove");
     }
-    return true;
+    return changed;
   }
 }

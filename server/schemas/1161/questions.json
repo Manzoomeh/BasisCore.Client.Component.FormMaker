@@ -301,8 +301,20 @@
             "dataType": "text"
           },
 
-          "caption": "",
+          "caption": "کشور",
           "link": "/server/schema/autocomplete?term=${term}"
+        },
+        {
+          "part": 2,
+          "viewType": "text",
+          "cssClass": "css_13057_2",
+          "validations": {
+            "minLength": "2",
+            "maxLength": "4000",
+            "dataType": "int"
+          },
+          "caption": "سرعت (دور بر دقیقه)",
+          "link": ""
         }
       ]
     }
