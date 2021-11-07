@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FormMaker Command - Zero Config</title>
+</head>
+
+<body>
+    <Basis core="component.bc.formmaker" run="atclient" options="options">
+    </Basis>
+    <script>
+        const options = {
+            mode: "new",
+            rKey: "1234-676876-2121",
+            questionUrl: "/server/schema/1161/questions",
+            answerUrl: "/server/schema/1161/answer"
+        }
+        const host = {
+            repositories: {
+                "bc.formmaker": "/basiscore.form-maker.component.js",
+            },
+        };
+    </script>
+    <script src="https://github.com/Manzoomeh/BasisCore.Client-v2/releases/download/v2.2.1/basiscore.min.js"></script>
+</body>
+
+</html>

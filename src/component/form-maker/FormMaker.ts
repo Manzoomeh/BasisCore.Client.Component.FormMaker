@@ -26,7 +26,7 @@ export default class FormMaker {
     this._container.innerHTML = layout;
   }
 
-  public async loadUIFromQuestion(): Promise<void> {
+  public async loadUIFromQuestionAsync(): Promise<void> {
     if (this.options.answerUrl) {
       this._answer = await HttpUtil.getDataAsync<IAnswerSchema>(this.options.answerUrl);
     }
