@@ -2,7 +2,7 @@ import HttpUtil from "../../HttpUtil";
 import QuestionPart from "../question-part/QuestionPart";
 import IFormMakerOptions from "../form-maker/IFormMakerOptions";
 import { IAnswerPart, IQuestion } from "../form-maker/ISchema";
-import AnswerPartFactory from "../part-control/AnswerPartFactory";
+import QuestionPartFactory from "../part-control/QuestionPartFactory";
 import QuestionContainer from "../question-container/QuestionContainer";
 import layout from "./assets/layout.html";
 import "./assets/style.css";
@@ -48,7 +48,7 @@ export default class Question {
 
     this._parts = question.parts.map((part) => {
       const value = answer?.parts.find((x) => x.part === part.part);
-      return AnswerPartFactory.generate(question, part, this, value);
+      return QuestionPartFactory.generate(question, part, this, value);
     });
   }
 

@@ -6,18 +6,22 @@ import AutoCompleteType from "./AutoCompleteType";
 import SearchPopup from "./SearchPopup";
 
 export default class AutoCompleteMultiType extends AutoCompleteType {
-  constructor(part: IQuestionPart, owner: Question, value: IPartCollection) {
-    super(part, layout, owner, value);
+  constructor(part: IQuestionPart, owner: Question, answer: IPartCollection) {
+    super(part, layout, owner);
     owner.replaceAddClick(this.onShowPopUpBtnClick.bind(this));
+    const value = answer?.values[0];
+    if (value) {
+      this.setValue({ id: value.value, value: value.title });
+    }
   }
 
   private onShowPopUpBtnClick() {
-    const popup = new SearchPopup(this.part.link, this.addValue.bind(this), true);
+    const popup = new SearchPopup(this.part.link, this.setValue.bind(this), true);
   }
 
-  private addValue(value: IFixValue): boolean {
+  protected setValue(value: IFixValue): boolean {
     if (!this._value) {
-      this.setValue(value);
+      super.setValue(value);
     } else {
       var p: IAnswerPart = {
         id: null,

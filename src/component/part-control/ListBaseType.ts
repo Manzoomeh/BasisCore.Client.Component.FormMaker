@@ -1,12 +1,20 @@
 import HttpUtil from "../../HttpUtil";
 import IFormMakerOptions from "../form-maker/IFormMakerOptions";
-import { IFixValue, IQuestion, IQuestionPart } from "../form-maker/ISchema";
+import {
+  IFixValue,
+  IPartCollection,
+  IPartValue,
+  IQuestion,
+  IQuestionPart,
+} from "../form-maker/ISchema";
 import QuestionBaseAnswerPart from "./QuestionBaseAnswerPart";
 import Question from "../question/Question";
 
 export default abstract class ListBaseType extends QuestionBaseAnswerPart {
-  constructor(part: IQuestionPart, layout: string, owner: Question) {
+  protected values: IPartCollection;
+  constructor(part: IQuestionPart, layout: string, owner: Question, answer: IPartCollection) {
     super(part, layout, owner);
+    this.values = answer;
     if (this.part.fixValues) {
       this.fillUI(this.part.fixValues);
     } else {

@@ -7,16 +7,20 @@ import AutoCompleteType from "./AutoCompleteType";
 
 export default class AutoCompleteSingleType extends AutoCompleteType {
   private _btn: HTMLButtonElement;
-  constructor(part: IQuestionPart, owner: Question, value: IPartCollection) {
-    super(part, layout, owner, value);
+  constructor(part: IQuestionPart, owner: Question, answer: IPartCollection) {
+    super(part, layout, owner);
     this._btn = this.element.querySelector("[data-bc-btn]");
     this._btn.addEventListener("click", this.onShowPopUpBtnClick.bind(this));
+    const value = answer?.values[0];
+    if (value) {
+      this.setValue({ id: value.value, value: value.title });
+    }
   }
 
   private onShowPopUpBtnClick(e: MouseEvent) {
     e.preventDefault();
     if (this._btn.getAttribute("data-bc-btn") === "add") {
-      const t = new SearchPopup(this.part.link, this.addValue.bind(this), false);
+      const t = new SearchPopup(this.part.link, this.setValue.bind(this), false);
     } else {
       this._value = null;
       this.element.querySelector("label").innerHTML = "";
@@ -24,8 +28,8 @@ export default class AutoCompleteSingleType extends AutoCompleteType {
     }
   }
 
-  private addValue(value: IFixValue): boolean {
-    const changed = this.setValue(value);
+  protected setValue(value: IFixValue): boolean {
+    const changed = super.setValue(value);
     if (changed) {
       this._btn.setAttribute("data-bc-btn", "remove");
     }

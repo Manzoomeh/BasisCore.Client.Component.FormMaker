@@ -1,12 +1,12 @@
 {
-  "usedforid": 1423330,
-  "schemaid": 1161,
+  "usedForId": 1423330,
+  "schemaId": 1161,
   "schemaVersion": 1.1,
-  "lastupdate": "",
+  "lastUpdate": "",
   "lid": 1,
   "properties": [
     {
-      "prpid": 13050,
+      "prpId": 13050,
       "answers": [
         {
           "id": 123152,
@@ -25,8 +25,40 @@
       ]
     },
     {
-      "typeid": 144,
-      "prpid": 130601,
+      "prpId": 13060,
+      "answers": [
+        {
+          "id": 8456251,
+          "parts": [
+            {
+              "part": 1,
+              "values": [
+                {
+                  "id": 78854,
+                  "value": 5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 8456251,
+          "parts": [
+            {
+              "part": 1,
+              "values": [
+                {
+                  "id": 78854,
+                  "value": 4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "prpId": 130601,
       "answers": [
         {
           "id": 8456215,
@@ -36,7 +68,99 @@
               "values": [
                 {
                   "id": 78854,
-                  "value": "توضیحات"
+                  "value": 5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "prpId": 130602,
+      "answers": [
+        {
+          "id": 8456215,
+          "parts": [
+            {
+              "part": 1,
+              "values": [
+                {
+                  "id": 78854,
+                  "value": 5,
+                  "title": "iran"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "prpId": 130631,
+      "answers": [
+        {
+          "id": 8456215,
+          "parts": [
+            {
+              "part": 1,
+              "values": [
+                {
+                  "id": 78854,
+                  "value": 5,
+                  "title": "iran"
+                }
+              ]
+            },
+            {
+              "part": 2,
+              "values": [
+                {
+                  "id": 85257,
+                  "value": "1000"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 8456215,
+          "parts": [
+            {
+              "part": 1,
+              "values": [
+                {
+                  "id": 78854,
+                  "value": 66,
+                  "title": "usa"
+                }
+              ]
+            },
+            {
+              "part": 2,
+              "values": [
+                {
+                  "id": 85257,
+                  "value": "1500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "prpId": 130621,
+      "answers": [
+        {
+          "id": 8456215,
+          "parts": [
+            {
+              "part": 1,
+              "values": [
+                {
+                  "id": 78854,
+                  "value": "شسشسشسش\nsdsdsdsds\nsdsdsds"
                 }
               ]
             }
@@ -46,7 +170,7 @@
     },
     {
       "typeid": 123,
-      "prpid": 1360,
+      "prpId": 1360,
       "answers": [
         {
           "id": 123152,
@@ -72,7 +196,7 @@
     },
     {
       "typeid": 262,
-      "prpid": 13057,
+      "prpId": 13057,
       "answers": [
         {
           "id": 45615,
@@ -116,7 +240,7 @@
                 {
                   "id": 78517,
                   "title": "کیلو ولت آمپر",
-                  "value": "5248"
+                  "value": 5247
                 }
               ]
             },
@@ -144,7 +268,7 @@
     },
     {
       "typeid": 269,
-      "prpid": 12345,
+      "prpId": 12345,
       "answers": [
         {
           "id": 127562,

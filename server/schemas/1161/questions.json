@@ -232,11 +232,11 @@
       ]
     },
     {
-      "prpId": 130601,
+      "prpId": 130621,
       "typeId": 128,
       "ord": 100,
       "vocab": "/ولتاژ",
-      "title": "ولتاژ",
+      "title": "توضیحات",
       "wordId": 50678,
       "multi": true,
       "sectionId": "3",
@@ -257,11 +257,11 @@
       ]
     },
     {
-      "prpId": 130601,
+      "prpId": 130602,
       "typeId": 128,
       "ord": 100,
       "vocab": "/ولتاژ",
-      "title": "ولتاژ - autocomplete",
+      "title": "autocomplete no multi",
       "wordId": 50678,
       "multi": false,
       "sectionId": "3",
@@ -282,11 +282,11 @@
       ]
     },
     {
-      "prpId": 130601,
+      "prpId": 130631,
       "typeId": 128,
       "ord": 100,
       "vocab": "/ولتاژ",
-      "title": "ولتاژ - autocomplete",
+      "title": "autocomplete multi",
       "wordId": 50678,
       "multi": true,
       "sectionId": "3",

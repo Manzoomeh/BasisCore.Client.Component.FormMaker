@@ -9,35 +9,35 @@ import TextAriaType from "./text-area/TextAriaType";
 import TextType from "./text/TextType";
 import UnknownType from "./unknown/UnknownType";
 
-export default class AnswerPartFactory {
+export default class QuestionPartFactory {
   public static generate(
     question: IQuestion,
     part: IQuestionPart,
     owner: Question,
-    data?: IPartCollection
+    answer?: IPartCollection
   ): QuestionPart {
     var retVal: QuestionPart = null;
     switch (part.viewType.toLowerCase()) {
       case "text": {
-        retVal = new TextType(part, owner);
+        retVal = new TextType(part, owner, answer);
         break;
       }
       case "select": {
-        retVal = new SelectType(part, owner);
+        retVal = new SelectType(part, owner, answer);
         break;
       }
       case "checklist": {
-        retVal = new CheckListType(part, owner);
+        retVal = new CheckListType(part, owner, answer);
         break;
       }
       case "textarea": {
-        retVal = new TextAriaType(part, owner);
+        retVal = new TextAriaType(part, owner, answer);
         break;
       }
       case "autocomplete": {
         retVal = question.multi
-          ? new AutoCompleteMultiType(part, owner, data)
-          : new AutoCompleteSingleType(part, owner, data);
+          ? new AutoCompleteMultiType(part, owner, answer)
+          : new AutoCompleteSingleType(part, owner, answer);
         break;
       }
       default: {

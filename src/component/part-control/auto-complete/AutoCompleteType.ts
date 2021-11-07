@@ -1,4 +1,4 @@
-import { IFixValue, IPartCollection, IPartValue, IQuestionPart } from "../../form-maker/ISchema";
+import { IFixValue, IPartValue, IQuestionPart } from "../../form-maker/ISchema";
 import QuestionBaseAnswerPart from "../QuestionBaseAnswerPart";
 import "./assets/style";
 import Question from "../../question/Question";
@@ -6,13 +6,9 @@ import Question from "../../question/Question";
 export default class AutoCompleteType extends QuestionBaseAnswerPart {
   protected _value: IPartValue;
   protected readonly label: HTMLLabelElement;
-  constructor(part: IQuestionPart, partLayout: string, owner: Question, value: IPartCollection) {
+  constructor(part: IQuestionPart, partLayout: string, owner: Question) {
     super(part, partLayout, owner);
     this.label = this.element.querySelector("[data-bc-add-item]");
-    this._value = value?.values[0];
-    if (this._value) {
-      this.label.innerHTML = this._value.title;
-    }
   }
 
   protected setValue(value: IFixValue): boolean {

@@ -1,19 +1,15 @@
-import IFormMakerOptions from "../../form-maker/IFormMakerOptions";
-import { IQuestion, IQuestionPart } from "../../form-maker/ISchema";
-import QuestionPart from "../../question-part/QuestionPart";
-import QuestionBaseAnswerPart from "../QuestionBaseAnswerPart";
+import { IPartCollection, IQuestion, IQuestionPart } from "../../form-maker/ISchema";
+import QuestionPartTypeBase from "../QuestionBaseAnswerPart";
 import layout from "./assets/layout.html";
 import Question from "../../question/Question";
 
-export default class TextType extends QuestionBaseAnswerPart {
+export default class TextType extends QuestionPartTypeBase {
   private _ctl: HTMLInputElement;
-  constructor(
-    part: IQuestionPart,
-
-    owner: Question
-  ) {
+  constructor(part: IQuestionPart, owner: Question, answer: IPartCollection) {
     super(part, layout, owner);
-    //this._ctl = HttpUtil.parse(layout).getElementsByTagName("input")[0];
-    //this.element.querySelector("[data-bc-part-ctl]").appendChild(this._ctl);
+    this._ctl = this.element.getElementsByTagName("input")[0];
+    if (answer) {
+      this._ctl.value = answer.values[0].value;
+    }
   }
 }
