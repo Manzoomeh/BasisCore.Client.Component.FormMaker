@@ -1,5 +1,9 @@
 import Question from "../../question/Question";
-import { IFixValue, IPartCollection, IQuestionPart } from "../../form-maker/ISchema";
+import {
+  IFixValue,
+  IPartCollection,
+  IQuestionPart,
+} from "../../form-maker/ISchema";
 import layout from "./assets/auto-complete-single-type.html";
 import SearchPopup from "./SearchPopup";
 import "./assets/style";
@@ -13,14 +17,20 @@ export default class AutoCompleteSingleType extends AutoCompleteType {
     this._btn.addEventListener("click", this.onShowPopUpBtnClick.bind(this));
     const value = answer?.values[0];
     if (value) {
-      this.setValue({ id: value.value, value: value.title });
+      this.getValueAsync(value.value).then((fixValue) =>
+        this.setValue(fixValue)
+      );
     }
   }
 
   private onShowPopUpBtnClick(e: MouseEvent) {
     e.preventDefault();
     if (this._btn.getAttribute("data-bc-btn") === "add") {
-      const t = new SearchPopup(this.part.link, this.setValue.bind(this), false);
+      const t = new SearchPopup(
+        this.part.link,
+        this.setValue.bind(this),
+        false
+      );
     } else {
       this._value = null;
       this.element.querySelector("label").innerHTML = "";

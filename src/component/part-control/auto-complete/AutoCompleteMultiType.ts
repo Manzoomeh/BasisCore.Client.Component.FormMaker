@@ -1,5 +1,10 @@
 import Question from "../../question/Question";
-import { IAnswerPart, IFixValue, IPartCollection, IQuestionPart } from "../../form-maker/ISchema";
+import {
+  IAnswerPart,
+  IFixValue,
+  IPartCollection,
+  IQuestionPart,
+} from "../../form-maker/ISchema";
 import layout from "./assets/auto-complete-multi-type.html";
 import "./assets/style";
 import AutoCompleteType from "./AutoCompleteType";
@@ -11,12 +16,18 @@ export default class AutoCompleteMultiType extends AutoCompleteType {
     owner.replaceAddClick(this.onShowPopUpBtnClick.bind(this));
     const value = answer?.values[0];
     if (value) {
-      this.setValue({ id: value.value, value: value.title });
+      this.getValueAsync(value.value).then((fixValue) =>
+        this.setValue(fixValue)
+      );
     }
   }
 
   private onShowPopUpBtnClick() {
-    const popup = new SearchPopup(this.part.link, this.setValue.bind(this), true);
+    const popup = new SearchPopup(
+      this.part.link,
+      this.setValue.bind(this),
+      true
+    );
   }
 
   protected setValue(value: IFixValue): boolean {
@@ -31,7 +42,6 @@ export default class AutoCompleteMultiType extends AutoCompleteType {
             values: [
               {
                 id: null,
-                title: value.value,
                 value: value.id,
               },
             ],

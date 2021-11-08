@@ -61,15 +61,6 @@ export interface IDependency {
   prpId: number;
 }
 
-// export interface IAnswerResult {
-//   parts: Array<IPartResult>;
-// }
-
-// export interface IPartResult {
-//   part: number;
-//   value: any;
-//   title: string;
-// }
 export interface ISection {
   id: number;
   title: string;
@@ -97,6 +88,5 @@ export interface IPartCollection {
 }
 export interface IPartValue {
   id?: number;
-  title: string;
   value: any;
 }

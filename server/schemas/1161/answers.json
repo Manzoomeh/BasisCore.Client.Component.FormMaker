@@ -87,8 +87,7 @@
               "values": [
                 {
                   "id": 78854,
-                  "value": 5,
-                  "title": "iran"
+                  "value": 5
                 }
               ]
             }
@@ -107,8 +106,7 @@
               "values": [
                 {
                   "id": 78854,
-                  "value": 5,
-                  "title": "iran"
+                  "value": 5
                 }
               ]
             },
@@ -131,8 +129,7 @@
               "values": [
                 {
                   "id": 78854,
-                  "value": 66,
-                  "title": "usa"
+                  "value": 66
                 }
               ]
             },
@@ -180,12 +177,10 @@
               "values": [
                 {
                   "id": 56987,
-                  "title": "110",
                   "value": "123"
                 },
                 {
                   "id": 8546,
-                  "title": "220",
                   "value": "18423"
                 }
               ]
