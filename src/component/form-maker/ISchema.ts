@@ -79,7 +79,7 @@ export interface IAnswerProperty {
 }
 
 export interface IAnswerPart {
-  id: number;
+  id?: number;
   parts: Array<IPartCollection>;
 }
 export interface IPartCollection {

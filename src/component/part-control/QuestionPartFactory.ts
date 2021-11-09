@@ -1,4 +1,3 @@
-import QuestionPart from "../question-part/QuestionPart";
 import Question from "../question/Question";
 import { IPartCollection, IQuestion, IQuestionPart } from "../form-maker/ISchema";
 import AutoCompleteMultiType from "./auto-complete/AutoCompleteMultiType";
@@ -8,6 +7,7 @@ import SelectType from "./select/SelectType";
 import TextAriaType from "./text-area/TextAriaType";
 import TextType from "./text/TextType";
 import UnknownType from "./unknown/UnknownType";
+import QuestionPart from "../question-part/QuestionPart";
 
 export default class QuestionPartFactory {
   public static generate(
@@ -36,12 +36,12 @@ export default class QuestionPartFactory {
       }
       case "autocomplete": {
         retVal = question.multi
-          ? new AutoCompleteMultiType(part, owner, answer)
+          ? new AutoCompleteMultiType(part, owner, answer?.values[0].id ? answer : null, answer)
           : new AutoCompleteSingleType(part, owner, answer);
         break;
       }
       default: {
-        retVal = new UnknownType(part, owner);
+        retVal = new UnknownType(part, owner, answer);
         break;
       }
     }

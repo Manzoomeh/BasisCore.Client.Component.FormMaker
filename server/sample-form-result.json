@@ -1,0 +1,56 @@
+{
+  "lid": 1,
+  "schemaId": 1,
+  "schemaVersion": 1,
+  "usedForId": 1,
+  "properties": [
+    {
+      "prpId": 13050,
+      "added": [
+        {
+          "parts": [
+            {
+              "part": 1,
+              "values": [
+                {
+                  "value": "نام دیزال ژنراتور"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "edited": [
+        {
+          "id": 123152,
+          "parts": [
+            {
+              "part": 1,
+              "values": [
+                {
+                  "id": 56987,
+                  "value": "qweqweqw"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "deleted": [
+        {
+          "id": 123172,
+          "parts": [
+            {
+              "part": 1,
+              "values": [
+                {
+                  "id": 56987
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

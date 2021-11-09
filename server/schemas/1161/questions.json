@@ -11,7 +11,7 @@
       "vocab": "/عنوان",
       "title": "نام دیزل ژنراتور",
       "wordId": 63228,
-      "multi": false,
+      "multi": true,
       "sectionId": "1",
       "cssClass": "css_13050",
       "help": "help data",
@@ -159,6 +159,10 @@
           },
           "fixValues": [
             {
+              "id": 0,
+              "value": "لطفا یکی از موارد را انتخاب کنید"
+            },
+            {
               "id": 4,
               "value": "110"
             },
@@ -250,7 +254,6 @@
           "validations": {
             "dataType": "text"
           },
-
           "caption": "",
           "link": ""
         }
@@ -275,7 +278,6 @@
           "validations": {
             "dataType": "text"
           },
-
           "caption": "",
           "link": "/server/schema/autocomplete?term=${term}"
         }
@@ -300,7 +302,6 @@
           "validations": {
             "dataType": "text"
           },
-
           "caption": "کشور",
           "link": "/server/schema/autocomplete?term=${term}"
         },

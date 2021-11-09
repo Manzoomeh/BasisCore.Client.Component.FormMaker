@@ -1,15 +1,21 @@
-import { IFixValue, IPartValue, IQuestionPart } from "../../form-maker/ISchema";
-import QuestionBaseAnswerPart from "../QuestionBaseAnswerPart";
+import { IFixValue, IPartCollection, IQuestionPart } from "../../form-maker/ISchema";
 import "./assets/style";
 import Question from "../../question/Question";
 import HttpUtil from "../../../HttpUtil";
+import QuestionPart from "../../question-part/QuestionPart";
+import { IUserActionPart } from "../../form-maker/IUserActionResult";
 
-export default class AutoCompleteType extends QuestionBaseAnswerPart {
-  protected _value: number;
+export default abstract class AutoCompleteType extends QuestionPart {
+  protected selectedId?: number;
   protected readonly label: HTMLLabelElement;
-  constructor(part: IQuestionPart, partLayout: string, owner: Question) {
-    super(part, partLayout, owner);
+  public get changed(): boolean {
+    return this.selectedId != (this.answer?.values[0].value ?? null);
+  }
+
+  constructor(part: IQuestionPart, partLayout: string, owner: Question, answer: IPartCollection) {
+    super(part, partLayout, owner, answer);
     this.label = this.element.querySelector("[data-bc-add-item]");
+    this.selectedId = null;
   }
 
   protected async getValueAsync(id: number): Promise<IFixValue> {
@@ -19,11 +25,23 @@ export default class AutoCompleteType extends QuestionBaseAnswerPart {
   }
 
   protected setValue(value: IFixValue): boolean {
-    const mustChange = this._value !== value.id;
+    const mustChange = this.selectedId !== value.id;
     if (mustChange) {
       this.element.querySelector("label").innerHTML = value.value;
-      this._value = value.id;
+      this.selectedId = value.id;
     }
     return mustChange;
+  }
+
+  public getUserActionPart(): IUserActionPart {
+    return {
+      part: this.part.part,
+      values: [
+        {
+          ...(this.answer && { id: this.answer.values[0].id }),
+          value: this.selectedId,
+        },
+      ],
+    };
   }
 }

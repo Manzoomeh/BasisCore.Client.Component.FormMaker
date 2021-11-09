@@ -6,6 +6,7 @@ import QuestionPartFactory from "../part-control/QuestionPartFactory";
 import QuestionContainer from "../question-container/QuestionContainer";
 import layout from "./assets/layout.html";
 import "./assets/style.css";
+import { IUserActionAnswer } from "../form-maker/IUserActionResult";
 
 export default class Question {
   readonly question: IQuestion;
@@ -15,6 +16,7 @@ export default class Question {
   readonly _parts: Array<QuestionPart>;
   readonly button: HTMLButtonElement;
   readonly owner: QuestionContainer;
+  readonly answer: IAnswerPart;
 
   private _onAddClick: AddRemoveCallback;
   private readonly _onRemoveClick: AddRemoveCallback;
@@ -30,6 +32,7 @@ export default class Question {
     this.container = container;
     this.options = options;
     this.owner = owner;
+    this.answer = answer;
     const ui = HttpUtil.parse(layout).querySelector("[data-bc-answer]");
     this.element = ui.querySelector("[data-bc-part-container]");
     if (this.question.multi) {
@@ -37,17 +40,20 @@ export default class Question {
       this.button.setAttribute("data-bc-btn", "add");
       this.button.addEventListener("click", this.onBtnClick.bind(this));
       this._onAddClick = () => {
-        this.owner.addAnswer();
+        this.owner.addQuestion();
         this.setRemovable();
       };
-      this._onRemoveClick = () => ui.remove();
+      this._onRemoveClick = () => {
+        this.owner.onQuestionRemove(this);
+        ui.remove();
+      };
     } else {
       ui.querySelector("[data-bc-btn]").remove();
     }
     container.appendChild(ui);
 
     this._parts = question.parts.map((part) => {
-      const value = answer?.parts.find((x) => x.part === part.part);
+      const value = this.answer?.parts.find((x) => x.part === part.part);
       return QuestionPartFactory.generate(question, part, this, value);
     });
   }
@@ -67,6 +73,17 @@ export default class Question {
 
   public replaceAddClick(onClick: AddRemoveCallback) {
     this._onAddClick = onClick;
+  }
+
+  public getAsUserAction(): IUserActionAnswer {
+    const userAction = this._parts.filter((x) => x.changed).map((x) => x.getUserActionPart());
+    return userAction.length > 0
+      ? { ...(this.answer && this.answer.id && { id: this.answer?.id }), parts: userAction }
+      : null;
+  }
+
+  public getUserEditAction(): IUserActionAnswer {
+    return null;
   }
 }
 

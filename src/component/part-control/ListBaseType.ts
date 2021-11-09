@@ -1,20 +1,12 @@
 import HttpUtil from "../../HttpUtil";
-import IFormMakerOptions from "../form-maker/IFormMakerOptions";
-import {
-  IFixValue,
-  IPartCollection,
-  IPartValue,
-  IQuestion,
-  IQuestionPart,
-} from "../form-maker/ISchema";
-import QuestionBaseAnswerPart from "./QuestionBaseAnswerPart";
+import { IFixValue, IPartCollection, IQuestionPart } from "../form-maker/ISchema";
+import { IUserActionPart } from "../form-maker/IUserActionResult";
+import QuestionPart from "../question-part/QuestionPart";
 import Question from "../question/Question";
 
-export default abstract class ListBaseType extends QuestionBaseAnswerPart {
-  protected values: IPartCollection;
+export default abstract class ListBaseType extends QuestionPart {
   constructor(part: IQuestionPart, layout: string, owner: Question, answer: IPartCollection) {
-    super(part, layout, owner);
-    this.values = answer;
+    super(part, layout, owner, answer);
     if (this.part.fixValues) {
       this.fillUI(this.part.fixValues);
     } else {

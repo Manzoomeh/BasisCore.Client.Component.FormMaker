@@ -1,25 +1,29 @@
-import { IQuestionPart } from "../form-maker/ISchema";
-import QuestionPart from "../question-part/QuestionPart";
-import HttpUtil from "../../HttpUtil";
-import Question from "../question/Question";
+// import { IQuestionPart } from "../form-maker/ISchema";
+// import HttpUtil from "../../HttpUtil";
+// import Question from "../question/Question";
 
-export default abstract class QuestionBaseAnswerPart extends QuestionPart {
-  protected readonly part: IQuestionPart;
+// export default abstract class QuestionPart {
+//   protected readonly part: IQuestionPart;
+//   protected readonly element: Element;
+//   protected readonly owner: Question;
 
-  constructor(part: IQuestionPart, partLayout: string, owner: Question) {
-    super(partLayout, owner);
-    this.part = part;
-    this.element.setAttribute("data-bc-part-related-cell", "");
-  }
+//   constructor(part: IQuestionPart, partLayout: string, owner: Question) {
+//     this.owner = owner;
+//     this.element = HttpUtil.parse(partLayout).querySelector("[data-bc-part]");
+//     this.element.innerHTML = partLayout;
+//     this.owner.element.appendChild(this.element);
+//     this.part = part;
+//     this.element.setAttribute("data-bc-part-related-cell", "");
+//   }
 
-  //setValue();
-  protected formatString(): string {
-    const data = {
-      rKey: this.owner.options.rKey,
-      prpId: this.owner.question.prpId,
-      part: this.part.part,
-    };
-    const url = HttpUtil.formatString(this.part.link, data);
-    return url;
-  }
-}
+//   //setValue();
+//   protected formatString(): string {
+//     const data = {
+//       rKey: this.owner.options.rKey,
+//       prpId: this.owner.question.prpId,
+//       part: this.part.part,
+//     };
+//     const url = HttpUtil.formatString(this.part.link, data);
+//     return url;
+//   }
+// }
