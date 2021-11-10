@@ -29,7 +29,12 @@ export default abstract class QuestionPart {
   protected readonly owner: Question;
   protected readonly answer: IPartCollection;
 
-  constructor(part: IQuestionPart, partLayout: string, owner: Question, answer: IPartCollection) {
+  constructor(
+    part: IQuestionPart,
+    partLayout: string,
+    owner: Question,
+    answer: IPartCollection
+  ) {
     this.owner = owner;
     this.answer = answer;
     this.part = part;
@@ -51,5 +56,7 @@ export default abstract class QuestionPart {
     return url;
   }
 
-  public abstract getUserActionPart(): IUserActionPart;
+  public abstract getAddedPart(): IUserActionPart;
+  //public abstract getEditedPart(): IUserActionPart;
+  //public abstract getUserEditActionPart(): IUserActionPart;
 }

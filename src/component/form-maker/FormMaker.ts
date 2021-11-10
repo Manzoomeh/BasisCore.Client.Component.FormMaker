@@ -30,14 +30,24 @@ export default class FormMaker {
 
   public async loadUIFromQuestionAsync(): Promise<void> {
     if (this.options.answerUrl) {
-      this._answer = await HttpUtil.getDataAsync<IAnswerSchema>(this.options.answerUrl);
+      this._answer = await HttpUtil.getDataAsync<IAnswerSchema>(
+        this.options.answerUrl
+      );
     }
-    this._schema = await HttpUtil.getDataAsync<IQuestionSchema>(this.options.questionUrl);
-    var container = this._container.querySelector("[data-bc-property-container]");
+    this._schema = await HttpUtil.getDataAsync<IQuestionSchema>(
+      this.options.questionUrl
+    );
+    var container = this._container.querySelector(
+      "[data-bc-property-container]"
+    );
     this._questions = new Array<QuestionCollection>();
     this._schema.questions.forEach((question) => {
-      const answer = this._answer?.properties.find((x) => x.prpId == question.prpId);
-      this._questions.push(new QuestionCollection(question, this.options, container, answer));
+      const answer = this._answer?.properties.find(
+        (x) => x.prpId == question.prpId
+      );
+      this._questions.push(
+        new QuestionCollection(question, this.options, container, answer)
+      );
     });
   }
 
@@ -47,7 +57,9 @@ export default class FormMaker {
       schemaId: this._schema.schemaId,
       schemaVersion: this._schema.schemaVersion,
       usedForId: this._answer?.usedForId,
-      properties: this._questions.map((x) => x.getUserAction()).filter((x) => x),
+      properties: this._questions
+        .map((x) => x.getUserAction())
+        .filter((x) => x),
     };
 
     return retVal;

@@ -1,5 +1,10 @@
 import Question from "../../question/Question";
-import { IFixValue, IPartCollection, IPartValue, IQuestionPart } from "../../form-maker/ISchema";
+import {
+  IFixValue,
+  IPartCollection,
+  IPartValue,
+  IQuestionPart,
+} from "../../form-maker/ISchema";
 import ListBaseType from "../ListBaseType";
 import layout from "./assets/layout.html";
 import { IUserActionPart } from "../../form-maker/IUserActionResult";
@@ -8,7 +13,8 @@ export default class SelectType extends ListBaseType {
   private readonly _select: HTMLSelectElement;
   public get changed(): boolean {
     return (
-      this._select.options[this._select.selectedIndex].value != (this.answer?.values[0].value ?? 0)
+      this._select.options[this._select.selectedIndex].value !=
+      (this.answer?.values[0].value ?? 0)
     );
   }
 
@@ -29,7 +35,7 @@ export default class SelectType extends ListBaseType {
     });
   }
 
-  public getUserActionPart(): IUserActionPart {
+  public getUserEditActionPart(): IUserActionPart {
     return {
       part: this.part.part,
       values: [
@@ -39,5 +45,20 @@ export default class SelectType extends ListBaseType {
         },
       ],
     };
+  }
+
+  public getAddedPart(): IUserActionPart {
+    let retVal = null;
+    if (!this.answer) {
+      retVal = {
+        part: this.part.part,
+        values: [
+          {
+            value: this._select.options[this._select.selectedIndex].value,
+          },
+        ],
+      };
+    }
+    return retVal;
   }
 }

@@ -6,27 +6,43 @@ import { IUserActionPart } from "../../form-maker/IUserActionResult";
 
 export default class TextType extends QuestionPart {
   public get changed(): boolean {
-    return this._ctl.value != (this.answer?.values[0].value ?? "");
+    return this._input.value != (this.answer?.values[0].value ?? "");
   }
 
-  private _ctl: HTMLInputElement;
+  private _input: HTMLInputElement;
   constructor(part: IQuestionPart, owner: Question, answer: IPartCollection) {
     super(part, layout, owner, answer);
-    this._ctl = this.element.getElementsByTagName("input")[0];
+    this._input = this.element.getElementsByTagName("input")[0];
     if (answer) {
-      this._ctl.value = answer.values[0].value;
+      this._input.value = answer.values[0].value;
     }
   }
 
-  public getUserActionPart(): IUserActionPart {
-    return {
-      part: this.part.part,
-      values: [
-        {
-          ...(this.answer && { id: this.answer.values[0].id }),
-          value: this._ctl.value,
-        },
-      ],
-    };
+  public getAddedPart(): IUserActionPart {
+    let retVal = null;
+    if (!this.answer) {
+      retVal = {
+        part: this.part.part,
+        values: [
+          {
+            value: this._input.value,
+          },
+        ],
+      };
+    }
+    return retVal;
   }
+  // public getEditedPart(): IUserActionPart {
+  //   let retVal = null;
+  //   if (this.answer) {
+  //   return {
+  //     part: this.part.part,
+  //     values: [
+  //       {
+  //         ...(this.answer && { id: this.answer.values[0].id }),
+  //         value: this._input.value,
+  //       },
+  //     ],
+  //   };
+  // }
 }

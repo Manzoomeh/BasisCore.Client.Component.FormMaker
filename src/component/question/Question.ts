@@ -75,12 +75,35 @@ export default class Question {
     this._onAddClick = onClick;
   }
 
-  public getAsUserAction(): IUserActionAnswer {
-    const userAction = this._parts.filter((x) => x.changed).map((x) => x.getUserActionPart());
+  public getAddedPart(): IUserActionAnswer {
+    const userAction = this._parts.map((x) => x.getAddedPart());
     return userAction.length > 0
-      ? { ...(this.answer && this.answer.id && { id: this.answer?.id }), parts: userAction }
+      ? {
+          parts: userAction,
+        }
       : null;
   }
+
+  // public getEditedPart(): IUserActionAnswer {
+  //   const userAction = this._parts.map((x) => x.getEditedPart());
+  //   return userAction.length > 0
+  //     ? {
+  //         parts: userAction,
+  //       }
+  //     : null;
+  // }
+
+  // public getUserAddAction(): IUserActionAnswer {
+  //   const userAction = this._parts
+  //     .filter((x) => x.changed)
+  //     .map((x) => x.getUserEditActionPart());
+  //   return userAction.length > 0
+  //     ? {
+  //         ...(this.answer && this.answer.id && { id: this.answer?.id }),
+  //         parts: userAction,
+  //       }
+  //     : null;
+  // }
 
   public getUserEditAction(): IUserActionAnswer {
     return null;

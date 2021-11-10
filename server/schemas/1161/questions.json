@@ -80,64 +80,7 @@
         }
       ]
     },
-    {
-      "prpId": 12354,
-      "typeId": 269,
-      "ord": 1002,
-      "vocab": "/کشور",
-      "title": "کشور تولید کننده",
-      "multi": true,
-      "sectionId": "2",
-      "cssClass": "css_12354",
-      "help": "help data",
-      "parts": [
-        {
-          "part": 1,
-          "viewType": "autocomplete",
-          "cssClass": "css_12354_1",
-          "validations": {
-            "minLength": "2",
-            "maxLength": "1000"
-          },
-          "caption": "",
-          "link": "https://data.basiscore.com/${rkey}/bc/fa/کشور?prpid=${prpid}&q=${autocomplete}"
-        }
-      ]
-    },
-    {
-      "prpId": 5678,
-      "typeId": 269,
-      "ord": 1002,
-      "vocab": "/شهر",
-      "title": "شهر تولید کننده",
-      "multi": true,
-      "sectionId": "2",
-      "cssClass": "css_5678",
-      "help": "help data",
-      "parts": [
-        {
-          "part": 1,
-          "viewType": "autocomplete",
-          "css-class": "css_5678_1",
-          "validations": {
-            "minLength": "2",
-            "maxLength": "1000",
-            "dataType": "text"
-          },
-          "dependency": [
-            {
-              "id": "12354  /*آی دی سوال مورد نظر*/",
-              "part": "1 /* پارت سوال مورد نظر */",
-              "schemaId": 1123,
-              "prpId": "2691 /*نام شهر*/"
-            }
-          ],
-          "caption": "",
-          "method": "post",
-          "link": "https://data.basiscore.com/bc/fa/شهر?prpid=5678"
-        }
-      ]
-    },
+
     {
       "prpId": 13060,
       "typeId": 128,
@@ -176,31 +119,7 @@
         }
       ]
     },
-    {
-      "prpId": 123456,
-      "typeId": 123,
-      "ord": 1000,
-      "vocab": "/تصویر",
-      "title": "تصویر دیزل ژنراتور",
-      "wordId": 123,
-      "multi": false,
-      "sectionId": "3",
-      "cssClass": "css_123456",
-      "help": "help data",
-      "parts": [
-        {
-          "part": 1,
-          "viewType": "upload",
-          "cssClass": "css_123456_1",
-          "validations": {
-            "format": "2",
-            "dataType": "ntext"
-          },
-          "caption": "",
-          "link": ""
-        }
-      ]
-    },
+
     {
       "prpId": 130601,
       "typeId": 128,

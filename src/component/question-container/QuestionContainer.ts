@@ -4,7 +4,10 @@ import IFormMakerOptions from "../form-maker/IFormMakerOptions";
 import { IAnswerPart, IAnswerProperty, IQuestion } from "../form-maker/ISchema";
 import layout from "./assets/layout.html";
 import "./assets/style";
-import { IUserActionAnswer, IUserActionProperty } from "../form-maker/IUserActionResult";
+import {
+  IUserActionAnswer,
+  IUserActionProperty,
+} from "../form-maker/IUserActionResult";
 
 export default class QuestionContainer {
   private readonly questionSchema: IQuestion;
@@ -24,9 +27,12 @@ export default class QuestionContainer {
     this.options = options;
     this.answer = answer;
     var copyTemplate = layout.replace("@title", this.questionSchema.title);
-    const uiElement = HttpUtil.parse(copyTemplate).querySelector("[data-bc-question]");
+    const uiElement =
+      HttpUtil.parse(copyTemplate).querySelector("[data-bc-question]");
     this.element = uiElement.querySelector("[data-bc-answer-collection]");
-    const headerContainer = uiElement.querySelector("[data-bc-answer-title-container]");
+    const headerContainer = uiElement.querySelector(
+      "[data-bc-answer-title-container]"
+    );
     if (questionSchema.parts.length > 1) {
       const template = document.createElement("div");
       template.setAttribute("data-bc-answer-title", "");
@@ -49,7 +55,13 @@ export default class QuestionContainer {
   }
 
   public addQuestion(answer?: IAnswerPart): Question {
-    const question = new Question(this.questionSchema, this.options, this, this.element, answer);
+    const question = new Question(
+      this.questionSchema,
+      this.options,
+      this,
+      this.element,
+      answer
+    );
     this._questions.forEach((x) => x.setRemovable());
     this._questions.push(question);
     return question;
@@ -68,7 +80,7 @@ export default class QuestionContainer {
 
   public getUserAction(): IUserActionProperty {
     let userAction: IUserActionProperty = null;
-    let added: Array<IUserActionAnswer> = null;
+    //let added: Array<IUserActionAnswer> = null;
     let edited: Array<IUserActionAnswer> = null;
     let deleted: Array<IUserActionAnswer> = null;
     if (this._removedQuestions) {
@@ -78,23 +90,25 @@ export default class QuestionContainer {
         };
       });
     }
-    const addedQuestion = this._questions.filter((x) => !x.answer?.id);
-    if (addedQuestion.length > 0) {
-      added = addedQuestion.map((x) => x.getAsUserAction()).filter((x) => x);
-    }
+    const added = this._questions.map((x) => x.getAddedPart()).filter((x) => x);
+    // const edited = this._questions
+    //   .map((x) => x.getEditedPart())
+    //   .filter((x) => x);
 
-    const editedQuestion = this._questions.filter((x) => x.answer?.id);
-    if (editedQuestion.length > 0) {
-      edited = editedQuestion.map((x) => x.getUserEditAction()).filter((x) => x);
-    }
+    // const editedQuestion = this._questions.filter((x) => x.answer?.id);
+    // if (editedQuestion.length > 0) {
+    //   edited = editedQuestion
+    //     .map((x) => x.getUserEditAction())
+    //     .filter((x) => x);
+    // }
 
     if (added?.length > 0 || edited?.length > 0 || deleted?.length > 0) {
-      console.log(added, edited, deleted, this.element);
+      //console.log(added, edited, deleted, this.element);
       userAction = {
         propId: this.questionSchema.prpId,
-        ...(added ? added : added),
-        ...(edited ? edited : edited),
-        ...(deleted ? deleted : deleted),
+        ...(added && { added: added }),
+        ...(edited && { edited: edited }),
+        ...(deleted && { deleted: deleted }),
       };
     }
     return userAction;

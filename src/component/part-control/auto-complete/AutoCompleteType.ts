@@ -1,4 +1,8 @@
-import { IFixValue, IPartCollection, IQuestionPart } from "../../form-maker/ISchema";
+import {
+  IFixValue,
+  IPartCollection,
+  IQuestionPart,
+} from "../../form-maker/ISchema";
 import "./assets/style";
 import Question from "../../question/Question";
 import HttpUtil from "../../../HttpUtil";
@@ -12,7 +16,12 @@ export default abstract class AutoCompleteType extends QuestionPart {
     return this.selectedId != (this.answer?.values[0].value ?? null);
   }
 
-  constructor(part: IQuestionPart, partLayout: string, owner: Question, answer: IPartCollection) {
+  constructor(
+    part: IQuestionPart,
+    partLayout: string,
+    owner: Question,
+    answer: IPartCollection
+  ) {
     super(part, partLayout, owner, answer);
     this.label = this.element.querySelector("[data-bc-add-item]");
     this.selectedId = null;
@@ -33,7 +42,7 @@ export default abstract class AutoCompleteType extends QuestionPart {
     return mustChange;
   }
 
-  public getUserActionPart(): IUserActionPart {
+  public getUserEditActionPart(): IUserActionPart {
     return {
       part: this.part.part,
       values: [
@@ -43,5 +52,20 @@ export default abstract class AutoCompleteType extends QuestionPart {
         },
       ],
     };
+  }
+
+  public getAddedPart(): IUserActionPart {
+    let retVal = null;
+    if (!this.answer) {
+      retVal = {
+        part: this.part.part,
+        values: [
+          {
+            value: this.selectedId,
+          },
+        ],
+      };
+    }
+    return retVal;
   }
 }

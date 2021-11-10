@@ -13,8 +13,12 @@ export default class UnknownType extends QuestionPart {
     super(part, layout, owner, answer);
   }
 
-  public getUserActionPart(): IUserActionPart {
+  public getUserEditActionPart(): IUserActionPart {
     throw new Error("Method not implemented.");
+    return null;
+  }
+
+  public getAddedPart(): IUserActionPart {
     return null;
   }
 }

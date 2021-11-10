@@ -19,7 +19,22 @@ export default class TextAriaType extends QuestionPart {
     }
   }
 
-  public getUserActionPart(): IUserActionPart {
+  public getAddedPart(): IUserActionPart {
+    let retVal = null;
+    if (!this.answer) {
+      retVal = {
+        part: this.part.part,
+        values: [
+          {
+            value: this._textArea.value,
+          },
+        ],
+      };
+    }
+    return retVal;
+  }
+
+  public getUserEditActionPart(): IUserActionPart {
     return {
       part: this.part.part,
       values: [
