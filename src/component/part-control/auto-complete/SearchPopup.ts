@@ -41,7 +41,6 @@ export default class SearchPopup {
 
     result.forEach((item) => {
       const li = document.createElement("li");
-      //li.setAttribute("data-bc-id", item.id.toString());
       li.setAttribute("data-bc-value", item.value);
       li.innerHTML = item.value;
       li.addEventListener("dblclick", (e) => {

@@ -9,7 +9,6 @@ import layout from "./assets/auto-complete-multi-type.html";
 import "./assets/style";
 import AutoCompleteType from "./AutoCompleteType";
 import SearchPopup from "./SearchPopup";
-import { IUserActionPart } from "../../form-maker/IUserActionResult";
 
 export default class AutoCompleteMultiType extends AutoCompleteType {
   constructor(

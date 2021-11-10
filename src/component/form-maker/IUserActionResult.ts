@@ -2,9 +2,6 @@ import { ISchema } from "./ISchema";
 
 export interface IUserActionResult extends ISchema {
   usedForId?: number;
-  //   added?: Array<IUserActionProperty>;
-  //   edited?: Array<IUserActionProperty>;
-  //   deleted?: Array<IUserActionProperty>;
   properties: Array<IUserActionProperty>;
 }
 

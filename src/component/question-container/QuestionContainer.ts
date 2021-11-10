@@ -4,10 +4,7 @@ import IFormMakerOptions from "../form-maker/IFormMakerOptions";
 import { IAnswerPart, IAnswerProperty, IQuestion } from "../form-maker/ISchema";
 import layout from "./assets/layout.html";
 import "./assets/style";
-import {
-  IUserActionAnswer,
-  IUserActionProperty,
-} from "../form-maker/IUserActionResult";
+import { IUserActionProperty } from "../form-maker/IUserActionResult";
 
 export default class QuestionContainer {
   private readonly questionSchema: IQuestion;
@@ -80,16 +77,7 @@ export default class QuestionContainer {
 
   public getUserAction(): IUserActionProperty {
     let userAction: IUserActionProperty = null;
-    //let added: Array<IUserActionAnswer> = null;
-    //let edited: Array<IUserActionAnswer> = null;
-    //let deleted: Array<IUserActionAnswer> = null;
-    // if (this._removedQuestions) {
-    //   deleted = this._removedQuestions.map((x) => {
-    //     return {
-    //       id: x,
-    //     };
-    //   });
-    // }
+
     const added = this._questions
       .map((x) => x.getAddedParts())
       .filter((x) => x);
@@ -104,15 +92,8 @@ export default class QuestionContainer {
         id: x,
       });
     });
-    // const editedQuestion = this._questions.filter((x) => x.answer?.id);
-    // if (editedQuestion.length > 0) {
-    //   edited = editedQuestion
-    //     .map((x) => x.getUserEditAction())
-    //     .filter((x) => x);
-    // }
 
     if (added.length > 0 || edited.length > 0 || deleted.length > 0) {
-      //console.log(added, edited, deleted, this.element);
       userAction = {
         propId: this.questionSchema.prpId,
         ...(added.length > 0 && { added: added }),
