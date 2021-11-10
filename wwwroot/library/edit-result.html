@@ -10,18 +10,40 @@
   </head>
 
   <body>
-    <div id="form" style="padding: 20px"></div>
+    <button onclick="getData()">Get Data</button>
+    <table>
+      <tr>
+        <td style="width: 50%"><div id="form" style="padding: 20px"></div></td>
+        <td style="width: 50%">
+          <pre
+            id="result"
+            style="direction: ltr; height: 700px; overflow: scroll"
+          ></pre>
+        </td>
+      </tr>
+    </table>
 
     <script>
       const config = {
         mode: "new",
         rKey: "1234-676876-2121",
         questionUrl: "/server/schema/1161/questions",
+        answerUrl: "/server/schema/1161/answer",
       };
 
       const div = document.getElementById("form");
       const fm = new formMaker.formMaker(div, config);
       fm.loadUIFromQuestionAsync().then((_) => console.log("end"));
+
+      function getData() {
+        const result = fm.getAnswers();
+        document.getElementById("result").innerHTML = JSON.stringify(
+          result,
+          undefined,
+          2
+        );
+        console.log(result.properties);
+      }
     </script>
   </body>
 </html>

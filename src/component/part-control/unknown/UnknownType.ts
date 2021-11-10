@@ -5,20 +5,19 @@ import QuestionPart from "../../question-part/QuestionPart";
 import { IUserActionPart } from "../../form-maker/IUserActionResult";
 
 export default class UnknownType extends QuestionPart {
-  public get changed(): boolean {
-    return false;
-  }
-
   constructor(part: IQuestionPart, owner: Question, answer: IPartCollection) {
     super(part, layout, owner, answer);
   }
 
-  public getUserEditActionPart(): IUserActionPart {
-    throw new Error("Method not implemented.");
+  public getAddedParts(): IUserActionPart {
     return null;
   }
 
-  public getAddedPart(): IUserActionPart {
+  public getEditedParts(): IUserActionPart {
+    return null;
+  }
+
+  public getDeletedParts(): IUserActionPart {
     return null;
   }
 }

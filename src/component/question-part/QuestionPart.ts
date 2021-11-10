@@ -23,8 +23,6 @@ import "./assets/style";
 
 export default abstract class QuestionPart {
   public readonly part: IQuestionPart;
-
-  public abstract get changed(): boolean;
   protected readonly element: Element;
   protected readonly owner: Question;
   protected readonly answer: IPartCollection;
@@ -41,11 +39,9 @@ export default abstract class QuestionPart {
     this.element = HttpUtil.parse(layout).querySelector("[data-bc-part]");
     this.element.innerHTML = partLayout;
     this.owner.element.appendChild(this.element);
-
     this.element.setAttribute("data-bc-part-related-cell", "");
   }
 
-  //setValue();
   protected formatString(): string {
     const data = {
       rKey: this.owner.options.rKey,
@@ -56,7 +52,7 @@ export default abstract class QuestionPart {
     return url;
   }
 
-  public abstract getAddedPart(): IUserActionPart;
-  //public abstract getEditedPart(): IUserActionPart;
-  //public abstract getUserEditActionPart(): IUserActionPart;
+  public abstract getAddedParts(): IUserActionPart;
+  public abstract getEditedParts(): IUserActionPart;
+  public abstract getDeletedParts(): IUserActionPart;
 }

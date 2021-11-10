@@ -2,7 +2,6 @@ import Question from "../../question/Question";
 import {
   IFixValue,
   IPartCollection,
-  IPartValue,
   IQuestionPart,
 } from "../../form-maker/ISchema";
 import ListBaseType from "../ListBaseType";
@@ -11,12 +10,6 @@ import { IUserActionPart } from "../../form-maker/IUserActionResult";
 
 export default class SelectType extends ListBaseType {
   private readonly _select: HTMLSelectElement;
-  public get changed(): boolean {
-    return (
-      this._select.options[this._select.selectedIndex].value !=
-      (this.answer?.values[0].value ?? 0)
-    );
-  }
 
   constructor(part: IQuestionPart, owner: Question, answer: IPartCollection) {
     super(part, layout, owner, answer);
@@ -35,19 +28,7 @@ export default class SelectType extends ListBaseType {
     });
   }
 
-  public getUserEditActionPart(): IUserActionPart {
-    return {
-      part: this.part.part,
-      values: [
-        {
-          ...(this.answer && { id: this.answer?.values[0].id }),
-          value: this._select.options[this._select.selectedIndex].value,
-        },
-      ],
-    };
-  }
-
-  public getAddedPart(): IUserActionPart {
+  public getAddedParts(): IUserActionPart {
     let retVal = null;
     if (!this.answer) {
       retVal = {
@@ -58,6 +39,46 @@ export default class SelectType extends ListBaseType {
           },
         ],
       };
+    }
+    return retVal;
+  }
+
+  public getEditedParts(): IUserActionPart {
+    let retVal = null;
+    if (this.answer) {
+      const newValue = this._select.options[this._select.selectedIndex].value;
+      const changed = newValue != this.answer.values[0].value;
+      if (changed && newValue != "0") {
+        retVal = {
+          part: this.part.part,
+          values: [
+            {
+              id: this.answer.values[0].id,
+              value: newValue,
+            },
+          ],
+        };
+      }
+    }
+    return retVal;
+  }
+
+  public getDeletedParts(): IUserActionPart {
+    let retVal = null;
+    if (this.answer) {
+      const newValue = this._select.options[this._select.selectedIndex].value;
+      const changed = newValue != this.answer.values[0].value;
+      if (changed && newValue == "0") {
+        retVal = {
+          part: this.part.part,
+          values: [
+            {
+              id: this.answer.values[0].id,
+              value: newValue,
+            },
+          ],
+        };
+      }
     }
     return retVal;
   }

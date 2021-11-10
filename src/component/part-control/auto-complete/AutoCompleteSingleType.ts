@@ -8,7 +8,6 @@ import layout from "./assets/auto-complete-single-type.html";
 import SearchPopup from "./SearchPopup";
 import "./assets/style";
 import AutoCompleteType from "./AutoCompleteType";
-import { IUserActionPart } from "../../form-maker/IUserActionResult";
 
 export default class AutoCompleteSingleType extends AutoCompleteType {
   private _btn: HTMLButtonElement;

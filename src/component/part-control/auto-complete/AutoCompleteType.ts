@@ -42,19 +42,7 @@ export default abstract class AutoCompleteType extends QuestionPart {
     return mustChange;
   }
 
-  public getUserEditActionPart(): IUserActionPart {
-    return {
-      part: this.part.part,
-      values: [
-        {
-          ...(this.answer && { id: this.answer.values[0].id }),
-          value: this.selectedId,
-        },
-      ],
-    };
-  }
-
-  public getAddedPart(): IUserActionPart {
+  public getAddedParts(): IUserActionPart {
     let retVal = null;
     if (!this.answer) {
       retVal = {
@@ -65,6 +53,33 @@ export default abstract class AutoCompleteType extends QuestionPart {
           },
         ],
       };
+    }
+    return retVal;
+  }
+
+  public getEditedParts(): IUserActionPart {
+    let retVal = null;
+    if (
+      this.answer &&
+      this.selectedId &&
+      this.answer.values[0].value != this.selectedId
+    ) {
+      retVal = {
+        part: this.part.part,
+        values: [
+          {
+            value: this.selectedId,
+          },
+        ],
+      };
+    }
+    return retVal;
+  }
+
+  public getDeletedParts(): IUserActionPart {
+    let retVal = null;
+    if (this.answer && !this.selectedId) {
+      retVal = this.answer;
     }
     return retVal;
   }
