@@ -29,7 +29,7 @@ router.get("/schema/:id/questions", function (req, res) {
 
 router.get("/schema/:id/answer", function (req, res) {
   const stream = fs.createReadStream(
-    path.join(__dirname, `/schemas/${req.params.id}/answers.json`)
+    path.join(__dirname, `/schemas/${1161}/answers.json`)
   );
   stream.on("open", function () {
     res.set("Content-Type", "application/json");

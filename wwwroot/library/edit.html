@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/basiscore.form-maker.js"></script>
+    <title>Document</title>
+    <link href="/assets/css/style.css" rel="stylesheet" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="/basiscore.form-maker.js"></script>
-  <title>Document</title>
-  <link href="/assets/css/style.css" rel="stylesheet" />
-</head>
+  <body>
+    <button onclick="getData()">Get Data</button>
+    <div id="form" style="padding: 20px"></div>
+    <script>
+      const config = {
+        mode: "new",
+        rKey: "1234-676876-2121",
+        schemaUrl: "/server/schema/${schemaId}/questions",
+        answerUrl: "/server/schema/${entityId}/answer",
+        entityId: 1423330,
+      };
 
-<body>
-  <button onclick="getData()">Get Data</button>
-  <div id="form" style="padding: 20px"></div>
-  <script>
-    const config = {
-      mode: "new",
-      rKey: "1234-676876-2121",
-      questionUrl: "/server/schema/1161/questions",
-      answerUrl: "/server/schema/1161/answer",
-    };
-
-    const div = document.getElementById("form");
-    const fm = new formMaker.formMaker(div, config);
-    fm.loadUIFromQuestionAsync().then((_) => console.log("end"));
-    function getData() {
-      console.log(fm.getAnswers())
-    }
-  </script>
-</body>
-
+      const div = document.getElementById("form");
+      const fm = new formMaker.formMaker(div, config);
+      fm.loadUIFromQuestionAsync().then((_) => console.log("end"));
+      function getData() {
+        console.log(fm.getAnswers());
+      }
+    </script>
+  </body>
 </html>

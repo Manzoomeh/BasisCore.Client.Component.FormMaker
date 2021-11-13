@@ -27,8 +27,9 @@
       const config = {
         mode: "new",
         rKey: "1234-676876-2121",
-        questionUrl: "/server/schema/1161/questions",
-        answerUrl: "/server/schema/1161/answer",
+        schemaUrl: "/server/schema/${schemaId}/questions",
+        answerUrl: "/server/schema/${entityId}/answer",
+        entityId: 1423330,
       };
 
       const div = document.getElementById("form");

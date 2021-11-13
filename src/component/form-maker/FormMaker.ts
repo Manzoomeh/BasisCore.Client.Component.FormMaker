@@ -28,27 +28,44 @@ export default class FormMaker {
     this._container.innerHTML = layout;
   }
 
-  public async loadUIFromQuestionAsync(): Promise<void> {
-    if (this.options.answerUrl) {
-      this._answer = await HttpUtil.getDataAsync<IAnswerSchema>(
-        this.options.answerUrl
-      );
-    }
-    this._schema = await HttpUtil.getDataAsync<IQuestionSchema>(
-      this.options.questionUrl
-    );
-    var container = this._container.querySelector(
-      "[data-bc-property-container]"
-    );
-    this._questions = new Array<QuestionCollection>();
-    this._schema.questions.forEach((question) => {
-      const answer = this._answer?.properties.find(
-        (x) => x.prpId == question.prpId
-      );
-      this._questions.push(
-        new QuestionCollection(question, this.options, container, answer)
-      );
+  private loadSchema(schemaId: number): Promise<IQuestionSchema> {
+    const url = HttpUtil.formatString(this.options.schemaUrl, {
+      schemaId,
     });
+    return HttpUtil.getDataAsync<IQuestionSchema>(url);
+  }
+  public async loadUIFromQuestionAsync(): Promise<void> {
+    let schemaId = this.options.schemaId;
+    if (this.options.entityId) {
+      if (this.options.answerUrl) {
+        const url = HttpUtil.formatString(this.options.answerUrl, {
+          entityId: this.options.entityId,
+        });
+
+        console.log(url);
+        this._answer = await HttpUtil.getDataAsync<IAnswerSchema>(url);
+      } else {
+        throw Error("'answerUrl' not set in options");
+      }
+      schemaId = this._answer.schemaId;
+    }
+    if (schemaId) {
+      this._schema = await this.loadSchema(schemaId);
+      var container = this._container.querySelector(
+        "[data-bc-property-container]"
+      );
+      this._questions = new Array<QuestionCollection>();
+      this._schema.questions.forEach((question) => {
+        const answer = this._answer?.properties.find(
+          (x) => x.prpId == question.prpId
+        );
+        this._questions.push(
+          new QuestionCollection(question, this.options, container, answer)
+        );
+      });
+    } else {
+      throw Error("can't detect 'schemaId'");
+    }
   }
 
   public getAnswers() {
