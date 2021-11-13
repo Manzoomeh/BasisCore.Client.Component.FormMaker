@@ -1,5 +1,4 @@
 import HttpUtil from "../../HttpUtil";
-import QuestionPart from "../question-part/QuestionPart";
 import IFormMakerOptions from "../form-maker/IFormMakerOptions";
 import { IAnswerPart, IQuestion } from "../form-maker/ISchema";
 import QuestionPartFactory from "../part-control/QuestionPartFactory";
@@ -7,6 +6,7 @@ import QuestionContainer from "../question-container/QuestionContainer";
 import layout from "./assets/layout.html";
 import "./assets/style.css";
 import { IUserActionAnswer } from "../form-maker/IUserActionResult";
+import QuestionPart from "../question-part/QuestionPart";
 
 export default class Question {
   readonly question: IQuestion;
@@ -35,7 +35,7 @@ export default class Question {
     this.answer = answer;
     const ui = HttpUtil.parse(layout).querySelector("[data-bc-answer]");
     this.element = ui.querySelector("[data-bc-part-container]");
-    if (this.question.multi) {
+    if (this.question.multi && this.options.mode != "view") {
       this.button = ui.querySelector("[data-bc-btn]");
       this.button.setAttribute("data-bc-btn", "add");
       this.button.addEventListener("click", this.onBtnClick.bind(this));
@@ -59,7 +59,7 @@ export default class Question {
   }
 
   public setRemovable() {
-    this.button.setAttribute("data-bc-btn", "remove");
+    this.button?.setAttribute("data-bc-btn", "remove");
   }
 
   private onBtnClick(e: MouseEvent) {

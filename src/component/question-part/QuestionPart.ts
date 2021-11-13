@@ -1,9 +1,8 @@
 import { IPartCollection, IQuestionPart } from "../form-maker/ISchema";
 import HttpUtil from "../../HttpUtil";
 import Question from "../question/Question";
-import { IUserActionPart } from "../form-maker/IUserActionResult";
 import layout from "./assets/layout.html";
-import "./assets/style";
+import { IUserActionPart } from "../form-maker/IUserActionResult";
 
 export default abstract class QuestionPart {
   public readonly part: IQuestionPart;

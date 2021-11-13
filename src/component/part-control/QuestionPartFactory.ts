@@ -1,5 +1,9 @@
 import Question from "../question/Question";
-import { IPartCollection, IQuestion, IQuestionPart } from "../form-maker/ISchema";
+import {
+  IPartCollection,
+  IQuestion,
+  IQuestionPart,
+} from "../form-maker/ISchema";
 import AutoCompleteMultiType from "./auto-complete/AutoCompleteMultiType";
 import AutoCompleteSingleType from "./auto-complete/AutocompleteSingleType";
 import CheckListType from "./check-list/CheckListType";
@@ -8,6 +12,10 @@ import TextAriaType from "./text-area/TextAriaType";
 import TextType from "./text/TextType";
 import UnknownType from "./unknown/UnknownType";
 import QuestionPart from "../question-part/QuestionPart";
+import ReadonlyCheckListType from "./check-list/ReadonlyCheckListType";
+import ReadOnlyText from "./readonly-text/ReadOnlyText";
+import ReadOnlyTextAriaType from "./readonly-text-area/TextAriaType";
+import ReadOnlySelectType from "./select/ReadOnlySelectType";
 
 export default class QuestionPartFactory {
   public static generate(
@@ -17,32 +25,69 @@ export default class QuestionPartFactory {
     answer?: IPartCollection
   ): QuestionPart {
     var retVal: QuestionPart = null;
-    switch (part.viewType.toLowerCase()) {
-      case "text": {
-        retVal = new TextType(part, owner, answer);
-        break;
+    if (owner.options.mode != "view") {
+      switch (part.viewType.toLowerCase()) {
+        case "text": {
+          retVal = new TextType(part, owner, answer);
+          break;
+        }
+        case "select": {
+          retVal = new SelectType(part, owner, answer);
+          break;
+        }
+        case "checklist": {
+          retVal = new CheckListType(part, owner, answer);
+          break;
+        }
+        case "textarea": {
+          retVal = new TextAriaType(part, owner, answer);
+          break;
+        }
+        case "autocomplete": {
+          retVal = question.multi
+            ? new AutoCompleteMultiType(
+                part,
+                owner,
+                answer?.values[0].id ? answer : null,
+                answer
+              )
+            : new AutoCompleteSingleType(part, owner, answer);
+          break;
+        }
+        default: {
+          retVal = new UnknownType(part, owner, answer);
+          break;
+        }
       }
-      case "select": {
-        retVal = new SelectType(part, owner, answer);
-        break;
-      }
-      case "checklist": {
-        retVal = new CheckListType(part, owner, answer);
-        break;
-      }
-      case "textarea": {
-        retVal = new TextAriaType(part, owner, answer);
-        break;
-      }
-      case "autocomplete": {
-        retVal = question.multi
-          ? new AutoCompleteMultiType(part, owner, answer?.values[0].id ? answer : null, answer)
-          : new AutoCompleteSingleType(part, owner, answer);
-        break;
-      }
-      default: {
-        retVal = new UnknownType(part, owner, answer);
-        break;
+    } else {
+      switch (part.viewType.toLowerCase()) {
+        case "checklist": {
+          retVal = new ReadonlyCheckListType(part, owner, answer);
+          break;
+        }
+        case "textarea": {
+          retVal = new ReadOnlyTextAriaType(part, owner, answer);
+          break;
+        }
+        case "select": {
+          retVal = new ReadOnlySelectType(part, owner, answer);
+          break;
+        }
+        case "autocomplete": {
+          retVal = question.multi
+            ? new AutoCompleteMultiType(
+                part,
+                owner,
+                answer?.values[0].id ? answer : null,
+                answer
+              )
+            : new AutoCompleteSingleType(part, owner, answer);
+          break;
+        }
+        default: {
+          retVal = new ReadOnlyText(part, owner, answer);
+          break;
+        }
       }
     }
     return retVal;

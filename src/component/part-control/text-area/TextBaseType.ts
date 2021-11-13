@@ -1,6 +1,6 @@
 import Question from "../../question/Question";
 import { IPartCollection, IQuestionPart } from "../../form-maker/ISchema";
-import QuestionPart from "../../question-part/QuestionPart";
+import EditableQuestionPart from "../../question-part/EditableQuestionPart";
 import { IUserActionPart } from "../../form-maker/IUserActionResult";
 
 export interface ITestElement {
@@ -9,7 +9,7 @@ export interface ITestElement {
 
 export default abstract class TextBaseType<
   TTextElementType extends ITestElement
-> extends QuestionPart {
+> extends EditableQuestionPart {
   protected readonly input: TTextElementType;
   constructor(
     part: IQuestionPart,

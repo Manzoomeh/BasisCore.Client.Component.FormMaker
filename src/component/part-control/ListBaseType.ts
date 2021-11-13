@@ -4,10 +4,10 @@ import {
   IPartCollection,
   IQuestionPart,
 } from "../form-maker/ISchema";
-import QuestionPart from "../question-part/QuestionPart";
+import EditableQuestionPart from "../question-part/EditableQuestionPart";
 import Question from "../question/Question";
 
-export default abstract class ListBaseType extends QuestionPart {
+export default abstract class ListBaseType extends EditableQuestionPart {
   constructor(
     part: IQuestionPart,
     layout: string,

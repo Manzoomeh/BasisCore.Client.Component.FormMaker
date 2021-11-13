@@ -14,7 +14,12 @@ export default class AutoCompleteSingleType extends AutoCompleteType {
   constructor(part: IQuestionPart, owner: Question, answer: IPartCollection) {
     super(part, layout, owner, answer);
     this._btn = this.element.querySelector("[data-bc-btn]");
-    this._btn.addEventListener("click", this.onShowPopUpBtnClick.bind(this));
+    console.log("ff", this.owner.options.mode);
+    if (owner.options.mode != "view") {
+      this._btn.addEventListener("click", this.onShowPopUpBtnClick.bind(this));
+    } else {
+      this._btn.remove();
+    }
     const value = answer?.values[0];
     if (value) {
       this.getValueAsync(value.value).then((fixValue) =>

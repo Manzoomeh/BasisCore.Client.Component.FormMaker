@@ -6,10 +6,10 @@ import {
 import "./assets/style";
 import Question from "../../question/Question";
 import HttpUtil from "../../../HttpUtil";
-import QuestionPart from "../../question-part/QuestionPart";
+import EditableQuestionPart from "../../question-part/EditableQuestionPart";
 import { IUserActionPart } from "../../form-maker/IUserActionResult";
 
-export default abstract class AutoCompleteType extends QuestionPart {
+export default abstract class AutoCompleteType extends EditableQuestionPart {
   protected selectedId?: number;
   protected readonly label: HTMLLabelElement;
   public get changed(): boolean {
