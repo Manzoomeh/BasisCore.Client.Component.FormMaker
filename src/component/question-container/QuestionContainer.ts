@@ -88,7 +88,11 @@ export default class QuestionContainer {
       .map((x) => x.getDeletedParts())
       .filter((x) => x)
       .map((x) =>
-        x.parts.length == this.questionSchema.parts.length ? { id: x.id } : x
+        x.parts.length == this.questionSchema.parts.length &&
+        edited.length == 0 &&
+        added.length == 0
+          ? { id: x.id }
+          : x
       );
 
     this._removedQuestions?.forEach((x) => {

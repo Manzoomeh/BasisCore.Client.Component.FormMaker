@@ -68,6 +68,7 @@ export default abstract class AutoCompleteType extends QuestionPart {
         part: this.part.part,
         values: [
           {
+            id: this.answer.values[0].id,
             value: this.selectedId,
           },
         ],
