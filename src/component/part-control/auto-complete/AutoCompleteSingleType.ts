@@ -1,9 +1,5 @@
 import Question from "../../question/Question";
-import {
-  IFixValue,
-  IPartCollection,
-  IQuestionPart,
-} from "../../form-maker/ISchema";
+import { IFixValue, IPartCollection, IQuestionPart } from "../../form-maker/ISchema";
 import layout from "./assets/auto-complete-single-type.html";
 import SearchPopup from "./SearchPopup";
 import "./assets/style";
@@ -14,7 +10,6 @@ export default class AutoCompleteSingleType extends AutoCompleteType {
   constructor(part: IQuestionPart, owner: Question, answer: IPartCollection) {
     super(part, layout, owner, answer);
     this._btn = this.element.querySelector("[data-bc-btn]");
-    console.log("ff", this.owner.options.mode);
     if (owner.options.mode != "view") {
       this._btn.addEventListener("click", this.onShowPopUpBtnClick.bind(this));
     } else {
@@ -22,20 +17,14 @@ export default class AutoCompleteSingleType extends AutoCompleteType {
     }
     const value = answer?.values[0];
     if (value) {
-      this.getValueAsync(value.value).then((fixValue) =>
-        this.setValue(fixValue)
-      );
+      this.getValueAsync(value.value).then((fixValue) => this.setValue(fixValue));
     }
   }
 
   private onShowPopUpBtnClick(e: MouseEvent) {
     e.preventDefault();
     if (this._btn.getAttribute("data-bc-btn") === "add") {
-      const t = new SearchPopup(
-        this.part.link,
-        this.setValue.bind(this),
-        false
-      );
+      const t = new SearchPopup(this.part.link, this.setValue.bind(this), false);
     } else {
       this.selectedId = null;
       this.element.querySelector("label").innerHTML = "";

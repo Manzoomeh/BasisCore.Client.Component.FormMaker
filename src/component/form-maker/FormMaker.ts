@@ -41,8 +41,6 @@ export default class FormMaker {
         const url = HttpUtil.formatString(this.options.answerUrl, {
           entityId: this.options.entityId,
         });
-
-        console.log(url);
         this._answer = await HttpUtil.getDataAsync<IAnswerSchema>(url);
       } else {
         throw Error("'answerUrl' not set in options");
@@ -51,17 +49,11 @@ export default class FormMaker {
     }
     if (schemaId) {
       this._schema = await this.loadSchema(schemaId);
-      var container = this._container.querySelector(
-        "[data-bc-property-container]"
-      );
+      var container = this._container.querySelector("[data-bc-property-container]");
       this._questions = new Array<QuestionCollection>();
       this._schema.questions.forEach((question) => {
-        const answer = this._answer?.properties.find(
-          (x) => x.prpId == question.prpId
-        );
-        this._questions.push(
-          new QuestionCollection(question, this.options, container, answer)
-        );
+        const answer = this._answer?.properties.find((x) => x.prpId == question.prpId);
+        this._questions.push(new QuestionCollection(question, this.options, container, answer));
       });
     } else {
       throw Error("can't detect 'schemaId'");
@@ -74,9 +66,7 @@ export default class FormMaker {
       schemaId: this._schema.schemaId,
       schemaVersion: this._schema.schemaVersion,
       usedForId: this._answer?.usedForId,
-      properties: this._questions
-        .map((x) => x.getUserAction())
-        .filter((x) => x),
+      properties: this._questions.map((x) => x.getUserAction()).filter((x) => x),
     };
 
     return retVal;
